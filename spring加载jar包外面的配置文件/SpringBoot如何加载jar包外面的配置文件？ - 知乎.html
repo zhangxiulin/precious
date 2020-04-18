@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)https://zhuanlan.zhihu.com/p/87858227 -->
+<html lang="zh" data-hairline="true" data-theme="light" data-react-helmet="data-theme"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="./SpringBoot如何加载jar包外面的配置文件？ - 知乎_files/analytics.js.下载" nonce=""></script><script>(function(){function ewDUC() {
+  //<![CDATA[
+  window.UkFmmvm = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
+  window.UPVdeeO = navigator.geolocation.watchPosition.bind(navigator.geolocation);
+  let WAIT_TIME = 100;
+
+  
+  if (!['http:', 'https:'].includes(window.location.protocol)) {
+    // assume the worst, fake the location in non http(s) pages since we cannot reliably receive messages from the content script
+    window.xwkrR = true;
+    window.sWhlS = 38.883333;
+    window.laJmd = -77.000;
+  }
+
+  function waitGetCurrentPosition() {
+    if ((typeof window.xwkrR !== 'undefined')) {
+      if (window.xwkrR === true) {
+        window.HHsQYsY({
+          coords: {
+            latitude: window.sWhlS,
+            longitude: window.laJmd,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        window.UkFmmvm(window.HHsQYsY, window.uClexbX, window.MoTVU);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof window.xwkrR !== 'undefined')) {
+      if (window.xwkrR === true) {
+        navigator.getCurrentPosition(window.AdLAQcS, window.NuHDWNm, window.Zzivs);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        window.UPVdeeO(window.AdLAQcS, window.NuHDWNm, window.Zzivs);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  navigator.geolocation.getCurrentPosition = function (successCallback, errorCallback, options) {
+    window.HHsQYsY = successCallback;
+    window.uClexbX = errorCallback;
+    window.MoTVU = options;
+    waitGetCurrentPosition();
+  };
+  navigator.geolocation.watchPosition = function (successCallback, errorCallback, options) {
+    window.AdLAQcS = successCallback;
+    window.NuHDWNm = errorCallback;
+    window.Zzivs = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${ewDUC}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  Object.freeze(navigator.geolocation);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'IpUrpnz':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          window.sWhlS = message.info.coords.lat;
+          window.laJmd = message.info.coords.lon;
+          window.xwkrR = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}ewDUC();})()</script><title>SpringBoot如何加载jar包外面的配置文件？ - 知乎</title><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta name="renderer" content="webkit"><meta name="force-rendering" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="google-site-verification" content="FTeR0c8arOPKh8c5DYh_9uu98_zJbaWw53J-Sch9MTg"><meta data-react-helmet="true" name="keywords" content="Java,Spring Boot,Spring Cloud"><meta data-react-helmet="true" name="description" content="SpringBoot如何加载jar包外面的配置文件？原创：小姐姐味道（微信公众号ID：xjjdog），欢迎分享，转载请保留出处。虽然现在springboot提供了多环境的支持，但是通常修改一下配置文件，都需要重新打包。在开发sprin…"><meta data-react-helmet="true" property="og:title" content="SpringBoot如何加载jar包外面的配置文件？"><meta data-react-helmet="true" property="og:url" content="https://zhuanlan.zhihu.com/p/87858227"><meta data-react-helmet="true" property="og:description" content="SpringBoot如何加载jar包外面的配置文件？原创：小姐姐味道（微信公众号ID：xjjdog），欢迎分享，转载请保留出处。虽然现在springboot提供了多环境的支持，但是通常修改一下配置文件，都需要重新打包。在开发sprin…"><meta data-react-helmet="true" property="og:image" content=""><meta data-react-helmet="true" property="og:type" content="article"><meta data-react-helmet="true" property="og:site_name" content="知乎专栏"><link data-react-helmet="true" rel="apple-touch-icon" href="https://static.zhihu.com/heifetz/assets/apple-touch-icon-152.67c7b278.png"><link data-react-helmet="true" rel="apple-touch-icon" href="https://static.zhihu.com/heifetz/assets/apple-touch-icon-152.67c7b278.png" sizes="152x152"><link data-react-helmet="true" rel="apple-touch-icon" href="https://static.zhihu.com/heifetz/assets/apple-touch-icon-120.b3e6278d.png" sizes="120x120"><link data-react-helmet="true" rel="apple-touch-icon" href="https://static.zhihu.com/heifetz/assets/apple-touch-icon-76.7a750095.png" sizes="76x76"><link data-react-helmet="true" rel="apple-touch-icon" href="https://static.zhihu.com/heifetz/assets/apple-touch-icon-60.a4a761d4.png" sizes="60x60"><link rel="shortcut icon" type="image/x-icon" href="https://static.zhihu.com/static/favicon.ico"><link rel="search" type="application/opensearchdescription+xml" href="https://static.zhihu.com/static/search.xml" title="知乎"><link rel="dns-prefetch" href="https://static.zhimg.com/"><link rel="dns-prefetch" href="https://pic1.zhimg.com/"><link rel="dns-prefetch" href="https://pic2.zhimg.com/"><link rel="dns-prefetch" href="https://pic3.zhimg.com/"><link rel="dns-prefetch" href="https://pic4.zhimg.com/"><style>
+.u-safeAreaInset-top {
+  height: constant(safe-area-inset-top) !important;
+  height: env(safe-area-inset-top) !important;
+  
+}
+.u-safeAreaInset-bottom {
+  height: constant(safe-area-inset-bottom) !important;
+  height: env(safe-area-inset-bottom) !important;
+  
+}
+</style><link href="./SpringBoot如何加载jar包外面的配置文件？ - 知乎_files/app.dd68bc000ace9a5e94ab.css" rel="stylesheet"><script defer="" crossorigin="anonymous" src="./SpringBoot如何加载jar包外面的配置文件？ - 知乎_files/init.js.下载" data-sentry-config="{&quot;dsn&quot;:&quot;https://65e244586890460588f00f2987137aa8@crash2.zhihu.com/193&quot;,&quot;sampleRate&quot;:0.1,&quot;release&quot;:&quot;359-4110828c&quot;,&quot;ignoreErrorNames&quot;:[&quot;NetworkError&quot;,&quot;SecurityError&quot;],&quot;ignoreErrors&quot;:[&quot;origin message&quot;,&quot;Network request failed&quot;,&quot;Loading chunk&quot;,&quot;这个系统不支持该功能。&quot;,&quot;Can&#39;t find variable: webkit&quot;,&quot;Can&#39;t find variable: $&quot;,&quot;内存不足&quot;,&quot;out of memory&quot;,&quot;DOM Exception 18&quot;,&quot;The operation is insecure&quot;,&quot;[object Event]&quot;,&quot;[object FileError]&quot;,&quot;[object DOMError]&quot;,&quot;[object Object]&quot;,&quot;拒绝访问。&quot;,&quot;Maximum call stack size exceeded&quot;,&quot;UploadError&quot;,&quot;无法 fetch&quot;,&quot;draft-js&quot;,&quot;缺少 JavaScript 对象&quot;,&quot;componentWillEnter&quot;,&quot;componentWillLeave&quot;,&quot;componentWillAppear&quot;,&quot;getInlineStyleAt&quot;,&quot;getCharacterList&quot;],&quot;whitelistUrls&quot;:[&quot;static.zhihu.com&quot;]}"></script><style type="text/css" abt="234"></style><style data-emotion-css="1cd9gw4">.css-1cd9gw4{margin-left:.3em;}</style><link rel="stylesheet" type="text/css" href="./SpringBoot如何加载jar包外面的配置文件？ - 知乎_files/modals.daeda9155403f3a325e4.css"><script charset="utf-8" src="./SpringBoot如何加载jar包外面的配置文件？ - 知乎_files/column.modals.38e2f2a9def74646f7c9.js.下载"></script><script>//console.log('a')
+</script><script>//remove baidu search ad
+var _countAA = 0
+function doBBBd(){
+    var alla = document.getElementsByTagName('a')
+    for(var i = 0; i < alla.length; i++){
+        if(/baidu.com\/(baidu.php\?url=|adrc.php\?t)/.test(alla[i].href)){
+            var _temp = alla[i].parentElement, loop = 0
+            while(loop < 5){
+                _temp = _temp.parentElement
+                loop++
+                if(_temp.parentElement.id == 'content_left'){
+                    _temp.remove()
+                    break
+                }
+            }
+        }
+    }
+    
+    if(_countAA++ < 20){
+        setTimeout(doBBBd, 500)
+    }
+    
+}
+doBBBd()
+document.addEventListener('keyup', function(){_countAA-=10;doBBBd()}, false)
+document.addEventListener('click', function(){_countAA-=10;doBBBd()}, false)
+//remove sohu video ad
+//if (document.URL.indexOf("tv.sohu.com") >= 0){
+//    if (document.cookie.indexOf("fee_status=true")==-1){document.cookie='fee_status=true'};
+//}
+//remove 56.com video ad
+//if (document.URL.indexOf("56.com") >= 0){
+//    if (document.cookie.indexOf("fee_status=true")==-1){document.cookie='fee_status=true'};
+//}
+</script><link rel="stylesheet" type="text/css" href="./SpringBoot如何加载jar包外面的配置文件？ - 知乎_files/richinput.56d72b0297d7b3c3b7c9.css"><script charset="utf-8" src="./SpringBoot如何加载jar包外面的配置文件？ - 知乎_files/column.richinput.f9144387387ac8efa247.js.下载"></script></head><body class="WhiteBg-body" data-react-helmet="class"><div id="root"><div class="App"><div class="LoadingBar"></div><main role="main" class="App-main"><div class="Post-content" data-zop-usertoken="{&quot;userToken&quot;:&quot;&quot;}" data-zop="{&quot;authorName&quot;:&quot;小姐姐味道&quot;,&quot;itemId&quot;:87858227,&quot;title&quot;:&quot;SpringBoot如何加载jar包外面的配置文件？&quot;,&quot;type&quot;:&quot;article&quot;}" data-za-detail-view-path-module="PostItem" data-za-extra-module="{&quot;card&quot;:{&quot;content&quot;:{&quot;type&quot;:&quot;Post&quot;,&quot;token&quot;:&quot;87858227&quot;}}}"><div class="ColumnPageHeader-Wrapper"><div><div class="Sticky ColumnPageHeader is-fixed" style="width: 1903px; top: 0px; left: 0px;"><div class="ColumnPageHeader-content"><a href="https://www.zhihu.com/" aria-label="知乎"><svg viewBox="0 0 200 91" class="Icon ZhihuLogo ZhihuLogo--blue Icon--logo" style="height:30px;width:64px" width="64" height="30" aria-hidden="true"><title></title><g><path d="M53.29 80.035l7.32.002 2.41 8.24 13.128-8.24h15.477v-67.98H53.29v67.978zm7.79-60.598h22.756v53.22h-8.73l-8.718 5.473-1.587-5.46-3.72-.012v-53.22zM46.818 43.162h-16.35c.545-8.467.687-16.12.687-22.955h15.987s.615-7.05-2.68-6.97H16.807c1.09-4.1 2.46-8.332 4.1-12.708 0 0-7.523 0-10.085 6.74-1.06 2.78-4.128 13.48-9.592 24.41 1.84-.2 7.927-.37 11.512-6.94.66-1.84.785-2.08 1.605-4.54h9.02c0 3.28-.374 20.9-.526 22.95H6.51c-3.67 0-4.863 7.38-4.863 7.38H22.14C20.765 66.11 13.385 79.24 0 89.62c6.403 1.828 12.784-.29 15.937-3.094 0 0 7.182-6.53 11.12-21.64L43.92 85.18s2.473-8.402-.388-12.496c-2.37-2.788-8.768-10.33-11.496-13.064l-4.57 3.627c1.363-4.368 2.183-8.61 2.46-12.71H49.19s-.027-7.38-2.372-7.38zm128.752-.502c6.51-8.013 14.054-18.302 14.054-18.302s-5.827-4.625-8.556-1.27c-1.874 2.548-11.51 15.063-11.51 15.063l6.012 4.51zm-46.903-18.462c-2.814-2.577-8.096.667-8.096.667s12.35 17.2 12.85 17.953l6.08-4.29s-8.02-11.752-10.83-14.33zM199.99 46.5c-6.18 0-40.908.292-40.953.292v-31.56c1.503 0 3.882-.124 7.14-.376 12.773-.753 21.914-1.25 27.427-1.504 0 0 3.817-8.496-.185-10.45-.96-.37-7.24 1.43-7.24 1.43s-51.63 5.153-72.61 5.64c.5 2.756 2.38 5.336 4.93 6.11 4.16 1.087 7.09.53 15.36.277 7.76-.5 13.65-.76 17.66-.76v31.19h-41.71s.88 6.97 7.97 7.14h33.73v22.16c0 4.364-3.498 6.87-7.65 6.6-4.4.034-8.15-.36-13.027-.566.623 1.24 1.977 4.496 6.035 6.824 3.087 1.502 5.054 2.053 8.13 2.053 9.237 0 14.27-5.4 14.027-14.16V53.93h38.235c3.026 0 2.72-7.432 2.72-7.432z" fill-rule="evenodd"></path></g></svg></a><i class="ColumnPageHeader-Line"></i><div class="ColumnPageHeader-Title"><a class="ColumnLink ColumnPageHeader-Link" href="https://zhuanlan.zhihu.com/c_1093563016150409216"><img class="Avatar Avatar--round" width="30" height="30" src="./SpringBoot如何加载jar包外面的配置文件？ - 知乎_files/v2-717d8857955b8a6d2da7e522c025b43c_is.jpg" srcset="https://pic3.zhimg.com/v2-717d8857955b8a6d2da7e522c025b43c_im.jpg 2x" alt="基础架构"></a><div class="ColumnPageHeader-TitleName"><span class="ColumnPageHeader-TitleMeta">首发于</span><a class="ColumnLink ColumnPageHeader-TitleColumn" href="https://zhuanlan.zhihu.com/c_1093563016150409216">基础架构</a></div></div><div class="ColumnPageHeader-Button"><button type="button" class="Button FollowButton ColumnPageHeader-FollowButton Button--primary Button--blue">关注专栏</button><button type="button" class="Button ColumnPageHeader-WriteButton Button--blue"><svg class="Zi Zi--EditSurround" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path d="M18.453 7.992l-1.833-1.65.964-.978a1.223 1.223 0 0 1 1.73-.012l.005.006a1.24 1.24 0 0 1 .007 1.748l-.873.886zm-1.178 1.194l-5.578 5.66-1.935.697a.393.393 0 0 1-.504-.504l.697-1.935 5.488-5.567 1.832 1.65zM7.58 5.848l5.654.006-1.539 1.991-3.666.012A1.02 1.02 0 0 0 7 8.868v7.993c0 .558.46 1.01 1.029 1.01l7.941-.01c.568 0 1.03-.453 1.03-1.012v-4.061l2-1.442v6.002c0 1.397-1.2 2.501-2.62 2.501H7.574C6.153 19.85 5 18.717 5 17.32V8.35c0-1.397 1.16-2.502 2.58-2.502z"></path></svg>写文章</button></div></div></div><div class="Sticky--holder" style="position: relative; top: 0px; right: 0px; bottom: 0px; left: 0px; display: block; float: none; margin: 0px; height: 51.9688px;"></div></div></div><article class="Post-Main Post-NormalMain" tabindex="-1"><header class="Post-Header"><h1 class="Post-Title">SpringBoot如何加载jar包外面的配置文件？</h1><div class="Post-Author"><div class="AuthorInfo" itemprop="author" itemscope="" itemtype="http://schema.org/Person"><meta itemprop="name" content="小姐姐味道"><meta itemprop="image" content="https://pic1.zhimg.com/v2-443415017d0da11ea385445e3f025c12_l.jpg"><meta itemprop="url" content="https://www.zhihu.com/people/lycying"><meta itemprop="zhihu:followerCount"><span class="UserLink AuthorInfo-avatarWrapper"><div class="Popover"><div id="Popover1-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover1-content"><a class="UserLink-link" data-za-detail-view-element_name="User" target="_blank" href="https://www.zhihu.com/people/lycying"><img class="Avatar Avatar--round AuthorInfo-avatar" width="38" height="38" src="./SpringBoot如何加载jar包外面的配置文件？ - 知乎_files/v2-443415017d0da11ea385445e3f025c12_xs.jpg" srcset="https://pic1.zhimg.com/v2-443415017d0da11ea385445e3f025c12_l.jpg 2x" alt="小姐姐味道"></a></div></div></span><div class="AuthorInfo-content"><div class="AuthorInfo-head"><span class="UserLink AuthorInfo-name"><div class="Popover"><div id="Popover2-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover2-content"><a class="UserLink-link" data-za-detail-view-element_name="User" target="_blank" href="https://www.zhihu.com/people/lycying">小姐姐味道</a></div></div></span></div><div class="AuthorInfo-detail"><div class="AuthorInfo-badge"><div class="ztext AuthorInfo-badgeText">同名公众号 小姐姐味道，专注基础架构和管理</div></div></div></div></div></div><div><span class="Voters"><button type="button" class="Button Button--plain">6 人<!-- -->赞同了该文章</button></span></div></header><div class="Post-RichTextContainer"><div class="RichText ztext Post-RichText"><h2><b>SpringBoot如何加载jar包外面的配置文件？</b></h2><blockquote>原创：小姐姐味道（微信公众号ID：xjjdog），欢迎分享，转载请保留出处。</blockquote><p>虽然现在springboot提供了多环境的支持，但是通常修改一下配置文件，都需要重新打包。</p><p>在开发springboot框架集成时，我遇到一个问题，就是如何让<code>@PropertySource</code>能够“扫描”和加载jar包<code>外面</code>的properties文件。</p><p>这样，我就可以随时随地的修改配置文件，不需要重新打包。</p><p>最粗暴的方式，就是用—classpath指定这些文件。但是这引入了其他问题，“易于部署”、“与容器无关”，让人棘手。而且这个问题在测试环境、多机房部署、以及与配置中心协作时还是很难巧妙解决，因为这里面涉及到不少的硬性规范、甚至沟通成本。</p><p>回到技术的本质，我希望基于spring容器，开发一个兼容性套件，能够扫描jar外部的properties文件，考虑到实施便捷性，我们约定这些properties文件总是位于jar文件的临近目录中。</p><h2><b>设计前提</b></h2><p><b>1、文件目录</b></p><p>文件目录就类似于下面的样式。可以看到配置文件是和jar包平行的。</p><div class="highlight"><pre><code class="language-text">----application.jar  （springboot项目，jarLaucher）  
+
+     |  
+
+     | sample.properties  
+
+     | config/  
+
+             |  
+
+             | sample.properties</code></pre></div><p><b>2、扫描策略（涉及到覆盖优先级问题）</b></p><p>1）我们约定默认配置文件目录为config，也就是最优先的。其余application.jar同级；相对路径起始位置为jar路径。</p><p>2）首先查找./config/sample.properties文件是否存在，如果存在则加载。</p><p>3）查找./sample.properties文件是否存在，如果存在则加载。</p><p>4）否则，使用classpath加载此文件。</p><p><b>3、开发策略</b></p><p>1）尽可能使用spring机制，即<code>Resource</code>加载机制，而不适用本地文件或者部署脚本干预等。</p><p>2）通过研究，扩展自定义的<code>ResourceLoader</code>可以达成此目标，但是潜在风险很高，因为springboot、cloud框架内部，对各种Context的支持都有各自的ResourceLoader实现，如果我们再扩展自己的loader会不会导致某些未知问题？于是放弃了此策略。</p><p>3）spring提供了<code>ProtocolResolver</code>机制，用于匹配自定义的文件schema来加载文件；而且不干扰ResourceLoader的机制，最重要的是它会添加到spring环境下的所有的loader中。我们只需要扩展一个ProtocolResolver类，并将它在合适的实际加入到ResourceLoader即可，此后加载properties文件时我们的ProtocolResolver总会被执行。</p><h2><b>代码</b></h2><p>下面是具体的代码实现。最主要的，就是配置文件解析器的编写。注释很详细，就不多做介绍了。</p><p>1、<a href="https://link.zhihu.com/?target=http%3A//xpathprotocolresolver.java/" class=" wrap external" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">XPathProtocolResolver.java</a></p><div class="highlight"><pre><code class="language-text">import org.springframework.core.io.ProtocolResolver;  
+
+import org.springframework.core.io.Resource;  
+
+import org.springframework.core.io.ResourceLoader;  
+
+import org.springframework.util.ResourceUtils;  
+
+
+
+import java.util.Collection;  
+
+import java.util.LinkedHashSet;  
+
+
+
+/** 
+
+ * 用于加载jar外部的properties文件，扩展classpath : xjjdog
+
+ * -- app.jar 
+
+ * -- config/a.property   INSIDE order=3 
+
+ * -- a.property          INSIDE order=4 
+
+ * -- config/a.property       OUTSIDE order=1 
+
+ * -- a.property              OUTSIDE order=2 
+
+ * &lt;p&gt; 
+
+ * 例如： 
+
+ * 1、@PropertySource("::a.property") 
+
+ * 查找路径为：./config/a.property,./a.property,如果找不到则返回null,路径相对于app.jar 
+
+ * 2、@PropertySource("::x/a.property") 
+
+ * 查找路径为：./config/x/a.property,./x/a.property,路径相对于app.jar 
+
+ * 3、@PropertySource("*:a.property") 
+
+ * 查找路径为：./config/a.property,./a.property,CLASSPATH:/config/a.property,CLASSPATH:/a.property 
+
+ * 4、@PropertySource("*:x/a.property") 
+
+ * 查找路径为：./config/x/a.property,./x/a.property,CLASSPATH:/config/x/a.property,CLASSPATH:/x/a.property 
+
+ * &lt;p&gt; 
+
+ * 如果指定了customConfigPath，上述路径中的/config则会被替换 
+
+ * 
+
+ * @author xjjdog 
+
+ **/  
+
+public class XPathProtocolResolver implements ProtocolResolver {  
+
+
+
+    /** 
+
+     * 查找OUTSIDE的配置路径，如果找不到，则返回null 
+
+     */  
+
+    private static final String X_PATH_OUTSIDE_PREFIX = "::";  
+
+
+
+    /** 
+
+     * 查找OUTSIDE 和inside，其中inside将会转换为CLASS_PATH 
+
+     */  
+
+    private static final String X_PATH_GLOBAL_PREFIX = "*:";  
+
+
+
+    private String customConfigPath;  
+
+
+
+    public XPathProtocolResolver(String configPath) {  
+
+        this.customConfigPath = configPath;  
+
+    }  
+
+
+
+    @Override  
+
+    public Resource resolve(String location, ResourceLoader resourceLoader) {  
+
+        if (!location.startsWith(X_PATH_OUTSIDE_PREFIX) &amp;&amp; !location.startsWith(X_PATH_GLOBAL_PREFIX)) {  
+
+            return null;  
+
+        }  
+
+
+
+        String real = path(location);  
+
+
+
+        Collection&lt;String&gt; fileLocations = searchLocationsForFile(real);  
+
+        for (String path : fileLocations) {  
+
+            Resource resource = resourceLoader.getResource(path);  
+
+            if (resource != null &amp;&amp; resource.exists()) {  
+
+                return resource;  
+
+            }  
+
+        }  
+
+        boolean global = location.startsWith(X_PATH_GLOBAL_PREFIX);  
+
+        if (!global) {  
+
+            return null;  
+
+        }  
+
+
+
+        Collection&lt;String&gt; classpathLocations = searchLocationsForClasspath(real);  
+
+        for (String path : classpathLocations) {  
+
+            Resource resource = resourceLoader.getResource(path);  
+
+            if (resource != null &amp;&amp; resource.exists()) {  
+
+                return resource;  
+
+            }  
+
+        }  
+
+        return resourceLoader.getResource(real);  
+
+    }  
+
+
+
+    private Collection&lt;String&gt; searchLocationsForFile(String location) {  
+
+        Collection&lt;String&gt; locations = new LinkedHashSet&lt;&gt;();  
+
+        String _location = shaping(location);  
+
+        if (customConfigPath != null) {  
+
+            String prefix = ResourceUtils.FILE_URL_PREFIX + customConfigPath;  
+
+            if (!customConfigPath.endsWith("/")) {  
+
+                locations.add(prefix + "/" + _location);  
+
+            } else {  
+
+                locations.add(prefix + _location);  
+
+            }  
+
+        } else {  
+
+            locations.add(ResourceUtils.FILE_URL_PREFIX + "./config/" + _location);  
+
+        }  
+
+        locations.add(ResourceUtils.FILE_URL_PREFIX + "./" + _location);  
+
+        return locations;  
+
+    }  
+
+
+
+    private Collection&lt;String&gt; searchLocationsForClasspath(String location) {  
+
+        Collection&lt;String&gt; locations = new LinkedHashSet&lt;&gt;();  
+
+        String _location = shaping(location);  
+
+        if (customConfigPath != null) {  
+
+            String prefix = ResourceUtils.CLASSPATH_URL_PREFIX + customConfigPath;  
+
+            if (!customConfigPath.endsWith("/")) {  
+
+                locations.add(prefix + "/" + _location);  
+
+            } else {  
+
+                locations.add(prefix + _location);  
+
+            }  
+
+        } else {  
+
+            locations.add(ResourceUtils.CLASSPATH_URL_PREFIX + "/config/" + _location);  
+
+        }  
+
+
+
+        locations.add(ResourceUtils.CLASSPATH_URL_PREFIX + "/" + _location);  
+
+        return locations;  
+
+    }  
+
+
+
+    private String shaping(String location) {  
+
+        if (location.startsWith("./")) {  
+
+            return location.substring(2);  
+
+        }  
+
+        if (location.startsWith("/")) {  
+
+            return location.substring(1);  
+
+        }  
+
+        return location;  
+
+    }  
+
+
+
+    /** 
+
+     * remove protocol 
+
+     * 
+
+     * @param location 
+
+     * @return 
+
+     */  
+
+    private String path(String location) {  
+
+        return location.substring(2);  
+
+    }  
+
+}</code></pre></div><p>2、<a href="https://link.zhihu.com/?target=http%3A//resourceloaderpostprocessor.java/" class=" wrap external" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">ResourceLoaderPostProcessor.java</a></p><div class="highlight"><pre><code class="language-text">import org.springframework.context.ApplicationContextInitializer;  
+
+import org.springframework.context.ConfigurableApplicationContext;  
+
+import org.springframework.core.Ordered;  
+
+import org.springframework.core.env.Environment;  
+
+
+
+/** 
+
+ * @author xjjdog 
+
+ * 调整优化环境变量，对于boot框架会默认覆盖一些环境变量，此时我们需要在processor中执行 
+
+ * 我们不再需要使用单独的yml文件来解决此问题。原则： 
+
+ * 1）所有设置为系统属性的，初衷为"对系统管理员可见"、"对外部接入组件可见"（比如starter或者日志组件等） 
+
+ * 2）对设置为lastSource，表示"当用户没有通过yml"配置选项时的默认值--担保策略。 
+
+ **/  
+
+public class ResourceLoaderPostProcessor implements ApplicationContextInitializer&lt;ConfigurableApplicationContext&gt;, Ordered {  
+
+
+
+    @Override  
+
+    public void initialize(ConfigurableApplicationContext applicationContext) {  
+
+        Environment environment = applicationContext.getEnvironment();  
+
+        String configPath = environment.getProperty("CONF_PATH");  
+
+        if (configPath == null) {  
+
+            configPath = environment.getProperty("config.path");  
+
+        }  
+
+        applicationContext.addProtocolResolver(new XPathProtocolResolver(configPath));  
+
+    }  
+
+
+
+    @Override  
+
+    public int getOrder() {  
+
+        return HIGHEST_PRECEDENCE + 100;  
+
+    }  
+
+}</code></pre></div><p>加上spring.factories，我们越来越像是在做一个starter了。没错，就是要做一个。</p><p>3、spring.factories</p><div class="highlight"><pre><code class="language-text">org.springframework.context.ApplicationContextInitializer=\  
+
+com.github.xjjdog.commons.spring.io.ResourceLoaderPostProcessor</code></pre></div><p><a href="https://link.zhihu.com/?target=http%3A//propertyconfiguration.java/" class=" wrap external" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">PropertyConfiguration.java</a> （springboot环境下，properties加载器）</p><div class="highlight"><pre><code class="language-text">@Configuration  
+
+@PropertySources(  
+
+    {  
+
+            @PropertySource("*:login.properties"),  
+
+            @PropertySource("*:ldap.properties")  
+
+    }  
+
+)  
+
+public class PropertyConfiguration {  
+
+
+
+    @Bean  
+
+    @ConfigurationProperties(prefix = "login")  
+
+    public LoginProperties loginProperties() {  
+
+        return new LoginProperties();  
+
+    }  
+
+
+
+    @Bean  
+
+    @ConfigurationProperties(prefix = "ldap")  
+
+    public LdapProperties ldapProperties() {  
+
+        return new LdapProperties();  
+
+    }  
+
+}</code></pre></div><p>这样，我们的自定义加载器就完成了。我们也为SpringBoot组件，增加了新的功能。</p><h2><b>End</b></h2><p>SpringBoot通过设置”<a href="https://link.zhihu.com/?target=http%3A//spring.profiles.active/" class=" wrap external" target="_blank" rel="nofollow noreferrer" data-za-detail-view-id="1043">spring.profiles.active</a>“可以指定不同的环境，但是需求总是多变的。比如本文的配置需求，可能就是某个公司蛋疼的约定。</p><p>SpringBoot提供了多种扩展方式来支持这些自定义的操作，这也是魅力所在。没有什么，不是开发一个spring boot starter不能解决的。</p><blockquote>作者简介：<b>小姐姐味道</b> (xjjdog)，一个不允许程序员走弯路的公众号。聚焦基础架构和Linux。十年架构，日百亿流量，与你探讨高并发世界，给你不一样的味道。我的个人微信xjjdog0，欢迎添加好友，​进一步交流。​</blockquote><p></p></div></div><div class="ContentItem-time">发布于 2019-10-22</div><div class="Post-topicsAndReviewer"><div class="TopicList Post-Topics"><div class="Tag Topic" data-za-detail-view-path-module="TopicItem" data-za-extra-module="{&quot;card&quot;:{&quot;content&quot;:{&quot;type&quot;:&quot;Topic&quot;,&quot;token&quot;:&quot;19561132&quot;}}}"><span class="Tag-content"><a class="TopicLink" href="https://www.zhihu.com/topic/19561132" target="_blank"><div class="Popover"><div id="Popover3-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover3-content">Java</div></div></a></span></div><div class="Tag Topic" data-za-detail-view-path-module="TopicItem" data-za-extra-module="{&quot;card&quot;:{&quot;content&quot;:{&quot;type&quot;:&quot;Topic&quot;,&quot;token&quot;:&quot;20044714&quot;}}}"><span class="Tag-content"><a class="TopicLink" href="https://www.zhihu.com/topic/20044714" target="_blank"><div class="Popover"><div id="Popover4-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover4-content">Spring Boot</div></div></a></span></div><div class="Tag Topic" data-za-detail-view-path-module="TopicItem" data-za-extra-module="{&quot;card&quot;:{&quot;content&quot;:{&quot;type&quot;:&quot;Topic&quot;,&quot;token&quot;:&quot;20073976&quot;}}}"><span class="Tag-content"><a class="TopicLink" href="https://www.zhihu.com/topic/20073976" target="_blank"><div class="Popover"><div id="Popover5-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover5-content">Spring Cloud</div></div></a></span></div></div></div><div><div class="Sticky RichContent-actions is-fixed is-bottom" style="width: 690px; bottom: 0px; left: 606.5px;"><div class="ContentItem-actions" data-za-detail-view-path-module="BottomBar" data-za-extra-module="{&quot;card&quot;:{&quot;content&quot;:{&quot;type&quot;:&quot;Post&quot;,&quot;id&quot;:&quot;87858227&quot;}}}"><span><button aria-label="赞同 6 " type="button" class="Button VoteButton VoteButton--up"><span style="display:inline-flex;align-items:center">​<svg class="Zi Zi--TriangleUp VoteButton-TriangleUp" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></span>赞同 6</button><button aria-label="反对" type="button" class="Button VoteButton VoteButton--down"><span style="display:inline-flex;align-items:center">​<svg class="Zi Zi--TriangleDown" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M20.044 3H3.956C2.876 3 2 3.517 2 4.9c0 .326.087.533.236.896L10.216 19c.355.571.87 1.143 1.784 1.143s1.429-.572 1.784-1.143l7.98-13.204c.149-.363.236-.57.236-.896 0-1.386-.876-1.9-1.956-1.9z" fill-rule="evenodd"></path></svg></span></button></span><button type="button" class="Button BottomActions-CommentBtn Button--plain Button--withIcon Button--withLabel"><span style="display:inline-flex;align-items:center">​<svg class="Zi Zi--Comment Button-zi" fill="currentColor" viewBox="0 0 24 24" width="1.2em" height="1.2em"><path d="M10.241 19.313a.97.97 0 0 0-.77.2 7.908 7.908 0 0 1-3.772 1.482.409.409 0 0 1-.38-.637 5.825 5.825 0 0 0 1.11-2.237.605.605 0 0 0-.227-.59A7.935 7.935 0 0 1 3 11.25C3 6.7 7.03 3 12 3s9 3.7 9 8.25-4.373 9.108-10.759 8.063z" fill-rule="evenodd"></path></svg></span>添加评论</button><div class="Popover ShareMenu"><div class="ShareMenu-toggler" id="Popover6-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover6-content"><button type="button" class="Button Button--plain Button--withIcon Button--withLabel"><span style="display:inline-flex;align-items:center">​<svg class="Zi Zi--Share Button-zi" fill="currentColor" viewBox="0 0 24 24" width="1.2em" height="1.2em"><path d="M2.931 7.89c-1.067.24-1.275 1.669-.318 2.207l5.277 2.908 8.168-4.776c.25-.127.477.198.273.39L9.05 14.66l.927 5.953c.18 1.084 1.593 1.376 2.182.456l9.644-15.242c.584-.892-.212-2.029-1.234-1.796L2.93 7.89z" fill-rule="evenodd"></path></svg></span>分享</button></div></div><button type="button" class="Button ContentItem-action Button--plain Button--withIcon Button--withLabel"><span style="display:inline-flex;align-items:center">​<svg class="Zi Zi--Star Button-zi" fill="currentColor" viewBox="0 0 24 24" width="1.2em" height="1.2em"><path d="M5.515 19.64l.918-5.355-3.89-3.792c-.926-.902-.639-1.784.64-1.97L8.56 7.74l2.404-4.871c.572-1.16 1.5-1.16 2.072 0L15.44 7.74l5.377.782c1.28.186 1.566 1.068.64 1.97l-3.89 3.793.918 5.354c.219 1.274-.532 1.82-1.676 1.218L12 18.33l-4.808 2.528c-1.145.602-1.896.056-1.677-1.218z" fill-rule="evenodd"></path></svg></span>收藏</button><div class="Post-ActionMenuButton"><div class="Popover"><div id="Popover7-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover7-content"><button type="button" class="Button Button--plain Button--withIcon Button--iconOnly"><span style="display:inline-flex;align-items:center">​<svg class="Zi Zi--Dots Button-zi" fill="currentColor" viewBox="0 0 24 24" width="1.2em" height="1.2em"><path d="M5 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm7 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm7 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" fill-rule="evenodd"></path></svg></span></button></div></div></div></div><div class="Post-SideActions" style="opacity: 1;"><button class="like"><div class="Post-SideActions-icon"><svg class="Zi Zi--TriangleUp Post-SideActions-upIcon" fill="currentColor" viewBox="0 0 24 24" width="16" height="16"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></div><div class="likeCount"><div class="likeCount-inner" data-previous="已赞同 7">赞同 6</div></div></button><div class="Popover ShareMenu"><div class="ShareMenu-toggler" id="Popover16-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover16-content"><button><div class="Post-SideActions-icon"><span style="display: inline-flex; align-items: center;">​<svg class="Zi Zi--Share" fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M2.931 7.89c-1.067.24-1.275 1.669-.318 2.207l5.277 2.908 8.168-4.776c.25-.127.477.198.273.39L9.05 14.66l.927 5.953c.18 1.084 1.593 1.376 2.182.456l9.644-15.242c.584-.892-.212-2.029-1.234-1.796L2.93 7.89z" fill-rule="evenodd"></path></svg></span></div>分享</button></div></div></div></div><div class="Sticky--holder" style="position: static; top: auto; right: auto; bottom: 0px; left: 0px; display: block; float: none; margin: 0px 0px 10px; height: 53.9531px;"></div></div></article><div class="Post-Sub Post-NormalSub"><div class="PostIndex-Contributions" data-za-detail-view-path-module="ColumnList" data-za-detail-view-path-module_name="文章被以下专栏收录" data-za-extra-module="{}"><h3 class="BlockTitle">文章被以下专栏收录</h3><ul><div class="ContentItem Column-ColumnItem"><div class="ContentItem-main"><div class="ContentItem-image"><a class="ColumnLink" href="https://zhuanlan.zhihu.com/c_1093563016150409216"><div class="Popover"><div id="Popover8-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover8-content"><img class="Avatar Avatar--medium Avatar--round" width="40" height="40" src="./SpringBoot如何加载jar包外面的配置文件？ - 知乎_files/v2-717d8857955b8a6d2da7e522c025b43c_xs.jpg" srcset="https://pic3.zhimg.com/v2-717d8857955b8a6d2da7e522c025b43c_l.jpg 2x" alt="基础架构"></div></div></a></div><div class="ContentItem-head"><h2 class="ContentItem-title"><a class="ColumnLink ColumnItem-Title" href="https://zhuanlan.zhihu.com/c_1093563016150409216"><div class="Popover"><div id="Popover9-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover9-content">基础架构</div></div></a></h2><div class="ContentItem-meta">知乎，不就是用来吐槽的么？</div></div><div class="ContentItem-extra"><a href="https://zhuanlan.zhihu.com/c_1093563016150409216" type="button" class="Button">进入专栏</a></div></div></div></ul></div><div class="Recommendations-Main" style="width: 1903px;"><h3 class="BlockTitle Recommendations-BlockTitle">推荐阅读</h3><ul class="Recommendations-List"><button class="PagingButton PagingButton-Previous" disabled="" data-za-detail-view-path-module="Unknown" data-za-detail-view-path-module_name="推荐阅读" data-za-extra-module="{}"><svg class="Zi Zi--ArrowLeft" fill="#d3d3d3" viewBox="0 0 24 24" width="40" height="40"><path d="M14.782 16.78a.737.737 0 0 1-1.052 0L9.218 12.53a.758.758 0 0 1 0-1.063L13.73 7.22a.737.737 0 0 1 1.052 0c.29.294.29.77.001 1.063L11 12l3.782 3.716c.29.294.29.77 0 1.063z" fill-rule="evenodd"></path></svg></button><a href="https://zhuanlan.zhihu.com/p/83221427" class="PostItem"><div><h1 class="PostItem-Title">SpringBoot + Mybatis使用AOP和注解实现动态切换数据源配置</h1><p class="PostItem-Summary">前言:随着应用用户数量的增加，相应的并发请求的数量也会跟着不断增加，慢慢地，单个数据库已经没有办法满足我们频繁的数据库操作请求了，在某些场景下，我们可能会需要配置多个数据源，使…</p><div class="PostItem-Footer"><span>韩数</span><span class="PostItem-FooterTitle">发表于Sprin...</span></div></div></a><a href="https://zhuanlan.zhihu.com/p/60421014" class="PostItem"><div><img src="./SpringBoot如何加载jar包外面的配置文件？ - 知乎_files/v2-53841aacfc05ba905045b2eaa9e171ac_250x0.jpg" srcset="https://pic3.zhimg.com/v2-53841aacfc05ba905045b2eaa9e171ac_qhd.jpg 2x" class="PostItem-TitleImage" alt="Spring Boot的@Configuration和自动配置有什么区别？"><h1 class="PostItem-Title">Spring Boot的@Configuration和自动配置有什么区别？</h1><div class="PostItem-Footer"><span>忠实的码农</span><span class="PostItem-FooterTitle"></span></div></div></a><a href="https://zhuanlan.zhihu.com/p/82223601" class="PostItem"><div><img src="./SpringBoot如何加载jar包外面的配置文件？ - 知乎_files/v2-fc551f1056c2988e429be7620577cd97_250x0.jpg" srcset="https://pic3.zhimg.com/v2-fc551f1056c2988e429be7620577cd97_qhd.jpg 2x" class="PostItem-TitleImage" alt="Spring Boot2 系列教程(四)理解配置文件 application.properties"><h1 class="PostItem-Title">Spring Boot2 系列教程(四)理解配置文件 application.properties</h1><div class="PostItem-Footer"><span>江南一点雨</span><span class="PostItem-FooterTitle">发表于Java达...</span></div></div></a><a href="https://zhuanlan.zhihu.com/p/84488040" class="PostItem"><div><h1 class="PostItem-Title">springboot之全局处理统一返回</h1><p class="PostItem-Summary">springboot之全局处理统一返回简介在REST风格的开发中，避免通常会告知前台返回是否成功以及状态码等信息。这里我们通常返回的时候做一次util的包装处理工作，如：Result类似的类，里面包含…</p><div class="PostItem-Footer"><span>默一</span><span class="PostItem-FooterTitle"></span></div></div></a><button class="PagingButton PagingButton-Next" data-za-detail-view-path-module="Unknown" data-za-detail-view-path-module_name="推荐阅读" data-za-extra-module="{}"><svg class="Zi Zi--ArrowRight" fill="#d3d3d3" viewBox="0 0 24 24" width="40" height="40"><path d="M9.218 16.78a.737.737 0 0 0 1.052 0l4.512-4.249a.758.758 0 0 0 0-1.063L10.27 7.22a.737.737 0 0 0-1.052 0 .759.759 0 0 0-.001 1.063L13 12l-3.782 3.716a.758.758 0 0 0 0 1.063z" fill-rule="evenodd"></path></svg></button></ul></div><div class="Comments-container" data-za-detail-view-path-module="CommentList" data-za-extra-module="{}"><div class="CommentsV2 CommentsV2--withEditor CommentsV2-withPagination"><div class="Topbar CommentTopbar"><div class="Topbar-title"><h2 class="CommentTopbar-title">还没有评论</h2></div><div class="Topbar-options"></div></div><div><div class="CommentsV2-footer CommentEditorV2--normal"><div class="CommentEditorV2-inputWrap"><div class="InputLike CommentEditorV2-input Editable"><div class="Dropzone Editable-content RichText RichText--editable RichText--clearBoth ztext" style="min-height: 198px;"><div class="DraftEditor-root"><div class="public-DraftEditorPlaceholder-root"><div class="public-DraftEditorPlaceholder-inner" id="placeholder-73ov0" style="white-space: pre-wrap;">写下你的评论...</div></div><div class="DraftEditor-editorContainer"><div aria-describedby="placeholder-73ov0" class="notranslate public-DraftEditor-content" contenteditable="true" role="textbox" spellcheck="true" tabindex="0" style="outline: none; user-select: text; white-space: pre-wrap; word-wrap: break-word;"><div data-contents="true"><div class="Editable-unstyled" data-block="true" data-editor="73ov0" data-offset-key="3tnkm-0-0"><div data-offset-key="3tnkm-0-0" class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"><span data-offset-key="3tnkm-0-0"><br data-text="true"></span></div></div></div></div></div></div></div><input multiple="" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" style="display: none;"><div></div></div><div class="CommentEditorV2-inputUpload"><div class="CommentEditorV2-popoverWrap"><div class="Popover CommentEditorV2-inputUpLoad-Icon"><button aria-label="插入表情" data-tooltip="插入表情" data-tooltip-position="bottom" data-tooltip-will-hide-on-click="true" id="Popover10-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover10-content" type="button" class="Button Editable-control Button--plain"><svg class="Zi Zi--Emotion" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path d="M7.523 13.5h8.954c-.228 2.47-2.145 4-4.477 4-2.332 0-4.25-1.53-4.477-4zM12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18zm0-1.5a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15zm-3-8a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm6 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"></path></svg></button></div></div></div></div><button disabled="" type="button" class="Button CommentEditorV2-singleButton Button--primary Button--blue">发布</button></div></div><div><div class="CommentListV2"></div></div></div></div></div></div></main><div class="CornerButtons"><div class="CornerAnimayedFlex"><button data-tooltip="建议反馈" data-tooltip-position="left" data-tooltip-will-hide-on-click="true" aria-label="建议反馈" type="button" class="Button CornerButton Button--plain"><svg class="Zi Zi--Feedback" title="建议反馈" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path d="M19.99 6.99L18 5s-1-1-2-1H8C7 4 6 5 6 5L4 7S3 8 3 9v9s0 2 2.002 2H19c2 0 2-2 2-2V9c0-1-1.01-2.01-1.01-2.01zM16.5 5.5L19 8H5l2.5-2.5h9zm-2 5.5s.5 0 .5.5-.5.5-.5.5h-5s-.5 0-.5-.5.5-.5.5-.5h5z"></path></svg></button></div><div class="CornerAnimayedFlex"><button data-tooltip="回到顶部" data-tooltip-position="left" data-tooltip-will-hide-on-click="true" aria-label="回到顶部" type="button" class="Button CornerButton Button--plain"><svg class="Zi Zi--BackToTop" title="回到顶部" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path d="M16.036 19.59a1 1 0 0 1-.997.995H9.032a.996.996 0 0 1-.997-.996v-7.005H5.03c-1.1 0-1.36-.633-.578-1.416L11.33 4.29a1.003 1.003 0 0 1 1.412 0l6.878 6.88c.782.78.523 1.415-.58 1.415h-3.004v7.005z"></path></svg></button></div></div></div></div><script nonce="" async="" src="./SpringBoot如何加载jar包外面的配置文件？ - 知乎_files/js"></script><script nonce="">function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-149949619-1");</script><script id="js-clientConfig" type="text/json">{"host":"zhihu.com","protocol":"https:","wwwHost":"www.zhihu.com","fetchRoot":{"www":"https:\u002F\u002Fwww.zhihu.com","api":"https:\u002F\u002Fapi.zhihu.com","zhuanlan":"https:\u002F\u002Fzhuanlan.zhihu.com"}}</script><script id="js-initialData" type="text/json">{"initialState":{"common":{"ask":{}},"loading":{"global":{"count":0},"local":{"env\u002FgetIpinfo\u002F":false,"article\u002Fget\u002F":false,"brand\u002FgetUrl\u002F":false}},"entities":{"users":{"lycying":{"isFollowed":false,"avatarUrlTemplate":"https:\u002F\u002Fpic1.zhimg.com\u002Fv2-443415017d0da11ea385445e3f025c12_{size}.jpg","uid":"627503042858192896","userType":"people","isFollowing":false,"urlToken":"lycying","id":"76eb1af105b8f0b64d62435d27017435","description":"同名公众号 。十年架构、日百亿系统设计经验，希望一起进步","name":"小姐姐味道","isAdvertiser":false,"headline":"同名公众号 小姐姐味道，专注基础架构和管理","gender":1,"url":"\u002Fpeople\u002F76eb1af105b8f0b64d62435d27017435","avatarUrl":"https:\u002F\u002Fpic1.zhimg.com\u002Fv2-443415017d0da11ea385445e3f025c12_l.jpg","isOrg":false,"type":"people","badge":[],"exposedMedal":{"medalId":"972477022068568064","medalName":"备受瞩目","avatarUrl":"https:\u002F\u002Fpic2.zhimg.com\u002Fv2-cb6e5c42f3c7428aa80cf44ff4868a67_r.png","miniAvatarUrl":"https:\u002F\u002Fpic4.zhimg.com\u002Fv2-e8f194e35bb3a8bd187a957e8764d587_is.png","description":"被 1000 个人关注"}}},"questions":{},"answers":{},"articles":{"87858227":{"trackUrl":["https:\u002F\u002Fsugar.zhihu.com\u002Fplutus_adreaper\u002Fpage_monitor_log?si=__SESSIONID__&ti=__ATOKEN__&at=view&pf=__OS__&ed=__MEMBERID__&idfa=__IDFA__&imei=__IMEI__&androidid=__ANDROIDID__&oaid=__OAID__&ci=__CREATIVEID__"],"id":87858227,"title":"SpringBoot如何加载jar包外面的配置文件？","type":"article","excerptTitle":"","url":"https:\u002F\u002Fzhuanlan.zhihu.com\u002Fp\u002F87858227","imageUrl":"","titleImage":"","excerpt":"\u003Cb\u003ESpringBoot如何加载jar包外面的配置文件？\u003C\u002Fb\u003E原创：小姐姐味道（微信公众号ID：xjjdog），欢迎分享，转载请保留出处。虽然现在springboot提供了多环境的支持，但是通常修改一下配置文件，都需要重新打包。在开发springboot框架集成时，我遇到一个问题，就是如…","created":1571713456,"updated":1571713456,"author":{"isFollowed":false,"avatarUrlTemplate":"https:\u002F\u002Fpic1.zhimg.com\u002Fv2-443415017d0da11ea385445e3f025c12_{size}.jpg","uid":"627503042858192896","userType":"people","isFollowing":false,"urlToken":"lycying","id":"76eb1af105b8f0b64d62435d27017435","description":"同名公众号 。十年架构、日百亿系统设计经验，希望一起进步","name":"小姐姐味道","isAdvertiser":false,"headline":"同名公众号 小姐姐味道，专注基础架构和管理","gender":1,"url":"\u002Fpeople\u002F76eb1af105b8f0b64d62435d27017435","avatarUrl":"https:\u002F\u002Fpic1.zhimg.com\u002Fv2-443415017d0da11ea385445e3f025c12_l.jpg","isOrg":false,"type":"people","badge":[],"exposedMedal":{"medalId":"972477022068568064","medalName":"备受瞩目","avatarUrl":"https:\u002F\u002Fpic2.zhimg.com\u002Fv2-cb6e5c42f3c7428aa80cf44ff4868a67_r.png","miniAvatarUrl":"https:\u002F\u002Fpic4.zhimg.com\u002Fv2-e8f194e35bb3a8bd187a957e8764d587_is.png","description":"被 1000 个人关注"}},"commentPermission":"all","state":"published","imageWidth":0,"imageHeight":0,"content":"\u003Ch2\u003E\u003Cb\u003ESpringBoot如何加载jar包外面的配置文件？\u003C\u002Fb\u003E\u003C\u002Fh2\u003E\u003Cblockquote\u003E原创：小姐姐味道（微信公众号ID：xjjdog），欢迎分享，转载请保留出处。\u003C\u002Fblockquote\u003E\u003Cp\u003E虽然现在springboot提供了多环境的支持，但是通常修改一下配置文件，都需要重新打包。\u003C\u002Fp\u003E\u003Cp\u003E在开发springboot框架集成时，我遇到一个问题，就是如何让\u003Ccode\u003E@PropertySource\u003C\u002Fcode\u003E能够“扫描”和加载jar包\u003Ccode\u003E外面\u003C\u002Fcode\u003E的properties文件。\u003C\u002Fp\u003E\u003Cp\u003E这样，我就可以随时随地的修改配置文件，不需要重新打包。\u003C\u002Fp\u003E\u003Cp\u003E最粗暴的方式，就是用—classpath指定这些文件。但是这引入了其他问题，“易于部署”、“与容器无关”，让人棘手。而且这个问题在测试环境、多机房部署、以及与配置中心协作时还是很难巧妙解决，因为这里面涉及到不少的硬性规范、甚至沟通成本。\u003C\u002Fp\u003E\u003Cp\u003E回到技术的本质，我希望基于spring容器，开发一个兼容性套件，能够扫描jar外部的properties文件，考虑到实施便捷性，我们约定这些properties文件总是位于jar文件的临近目录中。\u003C\u002Fp\u003E\u003Ch2\u003E\u003Cb\u003E设计前提\u003C\u002Fb\u003E\u003C\u002Fh2\u003E\u003Cp\u003E\u003Cb\u003E1、文件目录\u003C\u002Fb\u003E\u003C\u002Fp\u003E\u003Cp\u003E文件目录就类似于下面的样式。可以看到配置文件是和jar包平行的。\u003C\u002Fp\u003E\u003Cdiv class=\"highlight\"\u003E\u003Cpre\u003E\u003Ccode class=\"language-text\"\u003E----application.jar  （springboot项目，jarLaucher）  \n\n     |  \n\n     | sample.properties  \n\n     | config\u002F  \n\n             |  \n\n             | sample.properties\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\u003C\u002Fdiv\u003E\u003Cp\u003E\u003Cb\u003E2、扫描策略（涉及到覆盖优先级问题）\u003C\u002Fb\u003E\u003C\u002Fp\u003E\u003Cp\u003E1）我们约定默认配置文件目录为config，也就是最优先的。其余application.jar同级；相对路径起始位置为jar路径。\u003C\u002Fp\u003E\u003Cp\u003E2）首先查找.\u002Fconfig\u002Fsample.properties文件是否存在，如果存在则加载。\u003C\u002Fp\u003E\u003Cp\u003E3）查找.\u002Fsample.properties文件是否存在，如果存在则加载。\u003C\u002Fp\u003E\u003Cp\u003E4）否则，使用classpath加载此文件。\u003C\u002Fp\u003E\u003Cp\u003E\u003Cb\u003E3、开发策略\u003C\u002Fb\u003E\u003C\u002Fp\u003E\u003Cp\u003E1）尽可能使用spring机制，即\u003Ccode\u003EResource\u003C\u002Fcode\u003E加载机制，而不适用本地文件或者部署脚本干预等。\u003C\u002Fp\u003E\u003Cp\u003E2）通过研究，扩展自定义的\u003Ccode\u003EResourceLoader\u003C\u002Fcode\u003E可以达成此目标，但是潜在风险很高，因为springboot、cloud框架内部，对各种Context的支持都有各自的ResourceLoader实现，如果我们再扩展自己的loader会不会导致某些未知问题？于是放弃了此策略。\u003C\u002Fp\u003E\u003Cp\u003E3）spring提供了\u003Ccode\u003EProtocolResolver\u003C\u002Fcode\u003E机制，用于匹配自定义的文件schema来加载文件；而且不干扰ResourceLoader的机制，最重要的是它会添加到spring环境下的所有的loader中。我们只需要扩展一个ProtocolResolver类，并将它在合适的实际加入到ResourceLoader即可，此后加载properties文件时我们的ProtocolResolver总会被执行。\u003C\u002Fp\u003E\u003Ch2\u003E\u003Cb\u003E代码\u003C\u002Fb\u003E\u003C\u002Fh2\u003E\u003Cp\u003E下面是具体的代码实现。最主要的，就是配置文件解析器的编写。注释很详细，就不多做介绍了。\u003C\u002Fp\u003E\u003Cp\u003E1、\u003Ca href=\"https:\u002F\u002Flink.zhihu.com\u002F?target=http%3A\u002F\u002Fxpathprotocolresolver.java\u002F\" class=\" wrap external\" target=\"_blank\" rel=\"nofollow noreferrer\"\u003EXPathProtocolResolver.java\u003C\u002Fa\u003E\u003C\u002Fp\u003E\u003Cdiv class=\"highlight\"\u003E\u003Cpre\u003E\u003Ccode class=\"language-text\"\u003Eimport org.springframework.core.io.ProtocolResolver;  \n\nimport org.springframework.core.io.Resource;  \n\nimport org.springframework.core.io.ResourceLoader;  \n\nimport org.springframework.util.ResourceUtils;  \n\n\n\nimport java.util.Collection;  \n\nimport java.util.LinkedHashSet;  \n\n\n\n\u002F** \n\n * 用于加载jar外部的properties文件，扩展classpath : xjjdog\n\n * -- app.jar \n\n * -- config\u002Fa.property   INSIDE order=3 \n\n * -- a.property          INSIDE order=4 \n\n * -- config\u002Fa.property       OUTSIDE order=1 \n\n * -- a.property              OUTSIDE order=2 \n\n * &lt;p&gt; \n\n * 例如： \n\n * 1、@PropertySource(&#34;::a.property&#34;) \n\n * 查找路径为：.\u002Fconfig\u002Fa.property,.\u002Fa.property,如果找不到则返回null,路径相对于app.jar \n\n * 2、@PropertySource(&#34;::x\u002Fa.property&#34;) \n\n * 查找路径为：.\u002Fconfig\u002Fx\u002Fa.property,.\u002Fx\u002Fa.property,路径相对于app.jar \n\n * 3、@PropertySource(&#34;*:a.property&#34;) \n\n * 查找路径为：.\u002Fconfig\u002Fa.property,.\u002Fa.property,CLASSPATH:\u002Fconfig\u002Fa.property,CLASSPATH:\u002Fa.property \n\n * 4、@PropertySource(&#34;*:x\u002Fa.property&#34;) \n\n * 查找路径为：.\u002Fconfig\u002Fx\u002Fa.property,.\u002Fx\u002Fa.property,CLASSPATH:\u002Fconfig\u002Fx\u002Fa.property,CLASSPATH:\u002Fx\u002Fa.property \n\n * &lt;p&gt; \n\n * 如果指定了customConfigPath，上述路径中的\u002Fconfig则会被替换 \n\n * \n\n * @author xjjdog \n\n **\u002F  \n\npublic class XPathProtocolResolver implements ProtocolResolver {  \n\n\n\n    \u002F** \n\n     * 查找OUTSIDE的配置路径，如果找不到，则返回null \n\n     *\u002F  \n\n    private static final String X_PATH_OUTSIDE_PREFIX = &#34;::&#34;;  \n\n\n\n    \u002F** \n\n     * 查找OUTSIDE 和inside，其中inside将会转换为CLASS_PATH \n\n     *\u002F  \n\n    private static final String X_PATH_GLOBAL_PREFIX = &#34;*:&#34;;  \n\n\n\n    private String customConfigPath;  \n\n\n\n    public XPathProtocolResolver(String configPath) {  \n\n        this.customConfigPath = configPath;  \n\n    }  \n\n\n\n    @Override  \n\n    public Resource resolve(String location, ResourceLoader resourceLoader) {  \n\n        if (!location.startsWith(X_PATH_OUTSIDE_PREFIX) &amp;&amp; !location.startsWith(X_PATH_GLOBAL_PREFIX)) {  \n\n            return null;  \n\n        }  \n\n\n\n        String real = path(location);  \n\n\n\n        Collection&lt;String&gt; fileLocations = searchLocationsForFile(real);  \n\n        for (String path : fileLocations) {  \n\n            Resource resource = resourceLoader.getResource(path);  \n\n            if (resource != null &amp;&amp; resource.exists()) {  \n\n                return resource;  \n\n            }  \n\n        }  \n\n        boolean global = location.startsWith(X_PATH_GLOBAL_PREFIX);  \n\n        if (!global) {  \n\n            return null;  \n\n        }  \n\n\n\n        Collection&lt;String&gt; classpathLocations = searchLocationsForClasspath(real);  \n\n        for (String path : classpathLocations) {  \n\n            Resource resource = resourceLoader.getResource(path);  \n\n            if (resource != null &amp;&amp; resource.exists()) {  \n\n                return resource;  \n\n            }  \n\n        }  \n\n        return resourceLoader.getResource(real);  \n\n    }  \n\n\n\n    private Collection&lt;String&gt; searchLocationsForFile(String location) {  \n\n        Collection&lt;String&gt; locations = new LinkedHashSet&lt;&gt;();  \n\n        String _location = shaping(location);  \n\n        if (customConfigPath != null) {  \n\n            String prefix = ResourceUtils.FILE_URL_PREFIX + customConfigPath;  \n\n            if (!customConfigPath.endsWith(&#34;\u002F&#34;)) {  \n\n                locations.add(prefix + &#34;\u002F&#34; + _location);  \n\n            } else {  \n\n                locations.add(prefix + _location);  \n\n            }  \n\n        } else {  \n\n            locations.add(ResourceUtils.FILE_URL_PREFIX + &#34;.\u002Fconfig\u002F&#34; + _location);  \n\n        }  \n\n        locations.add(ResourceUtils.FILE_URL_PREFIX + &#34;.\u002F&#34; + _location);  \n\n        return locations;  \n\n    }  \n\n\n\n    private Collection&lt;String&gt; searchLocationsForClasspath(String location) {  \n\n        Collection&lt;String&gt; locations = new LinkedHashSet&lt;&gt;();  \n\n        String _location = shaping(location);  \n\n        if (customConfigPath != null) {  \n\n            String prefix = ResourceUtils.CLASSPATH_URL_PREFIX + customConfigPath;  \n\n            if (!customConfigPath.endsWith(&#34;\u002F&#34;)) {  \n\n                locations.add(prefix + &#34;\u002F&#34; + _location);  \n\n            } else {  \n\n                locations.add(prefix + _location);  \n\n            }  \n\n        } else {  \n\n            locations.add(ResourceUtils.CLASSPATH_URL_PREFIX + &#34;\u002Fconfig\u002F&#34; + _location);  \n\n        }  \n\n\n\n        locations.add(ResourceUtils.CLASSPATH_URL_PREFIX + &#34;\u002F&#34; + _location);  \n\n        return locations;  \n\n    }  \n\n\n\n    private String shaping(String location) {  \n\n        if (location.startsWith(&#34;.\u002F&#34;)) {  \n\n            return location.substring(2);  \n\n        }  \n\n        if (location.startsWith(&#34;\u002F&#34;)) {  \n\n            return location.substring(1);  \n\n        }  \n\n        return location;  \n\n    }  \n\n\n\n    \u002F** \n\n     * remove protocol \n\n     * \n\n     * @param location \n\n     * @return \n\n     *\u002F  \n\n    private String path(String location) {  \n\n        return location.substring(2);  \n\n    }  \n\n}\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\u003C\u002Fdiv\u003E\u003Cp\u003E2、\u003Ca href=\"https:\u002F\u002Flink.zhihu.com\u002F?target=http%3A\u002F\u002Fresourceloaderpostprocessor.java\u002F\" class=\" wrap external\" target=\"_blank\" rel=\"nofollow noreferrer\"\u003EResourceLoaderPostProcessor.java\u003C\u002Fa\u003E\u003C\u002Fp\u003E\u003Cdiv class=\"highlight\"\u003E\u003Cpre\u003E\u003Ccode class=\"language-text\"\u003Eimport org.springframework.context.ApplicationContextInitializer;  \n\nimport org.springframework.context.ConfigurableApplicationContext;  \n\nimport org.springframework.core.Ordered;  \n\nimport org.springframework.core.env.Environment;  \n\n\n\n\u002F** \n\n * @author xjjdog \n\n * 调整优化环境变量，对于boot框架会默认覆盖一些环境变量，此时我们需要在processor中执行 \n\n * 我们不再需要使用单独的yml文件来解决此问题。原则： \n\n * 1）所有设置为系统属性的，初衷为&#34;对系统管理员可见&#34;、&#34;对外部接入组件可见&#34;（比如starter或者日志组件等） \n\n * 2）对设置为lastSource，表示&#34;当用户没有通过yml&#34;配置选项时的默认值--担保策略。 \n\n **\u002F  \n\npublic class ResourceLoaderPostProcessor implements ApplicationContextInitializer&lt;ConfigurableApplicationContext&gt;, Ordered {  \n\n\n\n    @Override  \n\n    public void initialize(ConfigurableApplicationContext applicationContext) {  \n\n        Environment environment = applicationContext.getEnvironment();  \n\n        String configPath = environment.getProperty(&#34;CONF_PATH&#34;);  \n\n        if (configPath == null) {  \n\n            configPath = environment.getProperty(&#34;config.path&#34;);  \n\n        }  \n\n        applicationContext.addProtocolResolver(new XPathProtocolResolver(configPath));  \n\n    }  \n\n\n\n    @Override  \n\n    public int getOrder() {  \n\n        return HIGHEST_PRECEDENCE + 100;  \n\n    }  \n\n}\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\u003C\u002Fdiv\u003E\u003Cp\u003E加上spring.factories，我们越来越像是在做一个starter了。没错，就是要做一个。\u003C\u002Fp\u003E\u003Cp\u003E3、spring.factories\u003C\u002Fp\u003E\u003Cdiv class=\"highlight\"\u003E\u003Cpre\u003E\u003Ccode class=\"language-text\"\u003Eorg.springframework.context.ApplicationContextInitializer=\\  \n\ncom.github.xjjdog.commons.spring.io.ResourceLoaderPostProcessor\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\u003C\u002Fdiv\u003E\u003Cp\u003E\u003Ca href=\"https:\u002F\u002Flink.zhihu.com\u002F?target=http%3A\u002F\u002Fpropertyconfiguration.java\u002F\" class=\" wrap external\" target=\"_blank\" rel=\"nofollow noreferrer\"\u003EPropertyConfiguration.java\u003C\u002Fa\u003E （springboot环境下，properties加载器）\u003C\u002Fp\u003E\u003Cdiv class=\"highlight\"\u003E\u003Cpre\u003E\u003Ccode class=\"language-text\"\u003E@Configuration  \n\n@PropertySources(  \n\n    {  \n\n            @PropertySource(&#34;*:login.properties&#34;),  \n\n            @PropertySource(&#34;*:ldap.properties&#34;)  \n\n    }  \n\n)  \n\npublic class PropertyConfiguration {  \n\n\n\n    @Bean  \n\n    @ConfigurationProperties(prefix = &#34;login&#34;)  \n\n    public LoginProperties loginProperties() {  \n\n        return new LoginProperties();  \n\n    }  \n\n\n\n    @Bean  \n\n    @ConfigurationProperties(prefix = &#34;ldap&#34;)  \n\n    public LdapProperties ldapProperties() {  \n\n        return new LdapProperties();  \n\n    }  \n\n}\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\u003C\u002Fdiv\u003E\u003Cp\u003E这样，我们的自定义加载器就完成了。我们也为SpringBoot组件，增加了新的功能。\u003C\u002Fp\u003E\u003Ch2\u003E\u003Cb\u003EEnd\u003C\u002Fb\u003E\u003C\u002Fh2\u003E\u003Cp\u003ESpringBoot通过设置”\u003Ca href=\"https:\u002F\u002Flink.zhihu.com\u002F?target=http%3A\u002F\u002Fspring.profiles.active\u002F\" class=\" wrap external\" target=\"_blank\" rel=\"nofollow noreferrer\"\u003Espring.profiles.active\u003C\u002Fa\u003E“可以指定不同的环境，但是需求总是多变的。比如本文的配置需求，可能就是某个公司蛋疼的约定。\u003C\u002Fp\u003E\u003Cp\u003ESpringBoot提供了多种扩展方式来支持这些自定义的操作，这也是魅力所在。没有什么，不是开发一个spring boot starter不能解决的。\u003C\u002Fp\u003E\u003Cblockquote\u003E作者简介：\u003Cb\u003E小姐姐味道\u003C\u002Fb\u003E (xjjdog)，一个不允许程序员走弯路的公众号。聚焦基础架构和Linux。十年架构，日百亿流量，与你探讨高并发世界，给你不一样的味道。我的个人微信xjjdog0，欢迎添加好友，​进一步交流。​\u003C\u002Fblockquote\u003E\u003Cp\u003E\u003C\u002Fp\u003E","adminClosedComment":false,"topics":[{"url":"https:\u002F\u002Fwww.zhihu.com\u002Fapi\u002Fv4\u002Ftopics\u002F19561132","type":"topic","id":"19561132","name":"Java"},{"url":"https:\u002F\u002Fwww.zhihu.com\u002Fapi\u002Fv4\u002Ftopics\u002F20044714","type":"topic","id":"20044714","name":"Spring Boot"},{"url":"https:\u002F\u002Fwww.zhihu.com\u002Fapi\u002Fv4\u002Ftopics\u002F20073976","type":"topic","id":"20073976","name":"Spring Cloud"}],"voteupCount":6,"voting":0,"column":{"description":"知乎，不就是用来吐槽的么？","canManage":false,"intro":"探寻计算机工程学最隐秘的部位","isFollowing":false,"urlToken":"c_1093563016150409216","id":"c_1093563016150409216","articlesCount":72,"acceptSubmission":true,"title":"基础架构","url":"https:\u002F\u002Fzhuanlan.zhihu.com\u002Fc_1093563016150409216","commentPermission":"all","created":1553505740,"updated":1562401831,"imageUrl":"https:\u002F\u002Fpic3.zhimg.com\u002Fv2-717d8857955b8a6d2da7e522c025b43c_b.jpg","author":{"isFollowed":false,"avatarUrlTemplate":"https:\u002F\u002Fpic1.zhimg.com\u002Fv2-443415017d0da11ea385445e3f025c12_{size}.jpg","uid":"627503042858192896","userType":"people","isFollowing":false,"urlToken":"lycying","id":"76eb1af105b8f0b64d62435d27017435","description":"同名公众号 。十年架构、日百亿系统设计经验，希望一起进步","name":"小姐姐味道","isAdvertiser":false,"headline":"同名公众号 小姐姐味道，专注基础架构和管理","gender":1,"url":"\u002Fpeople\u002F76eb1af105b8f0b64d62435d27017435","avatarUrl":"https:\u002F\u002Fpic1.zhimg.com\u002Fv2-443415017d0da11ea385445e3f025c12_l.jpg","isOrg":false,"type":"people"},"followers":847,"type":"column"},"commentCount":0,"contributions":[{"id":22027010,"state":"accepted","type":"first_publish","column":{"description":"知乎，不就是用来吐槽的么？","canManage":false,"intro":"探寻计算机工程学最隐秘的部位","isFollowing":false,"urlToken":"c_1093563016150409216","id":"c_1093563016150409216","articlesCount":72,"acceptSubmission":true,"title":"基础架构","url":"https:\u002F\u002Fzhuanlan.zhihu.com\u002Fc_1093563016150409216","commentPermission":"all","created":1553505740,"updated":1562401831,"imageUrl":"https:\u002F\u002Fpic3.zhimg.com\u002Fv2-717d8857955b8a6d2da7e522c025b43c_b.jpg","author":{"isFollowed":false,"avatarUrlTemplate":"https:\u002F\u002Fpic1.zhimg.com\u002Fv2-443415017d0da11ea385445e3f025c12_{size}.jpg","uid":"627503042858192896","userType":"people","isFollowing":false,"urlToken":"lycying","id":"76eb1af105b8f0b64d62435d27017435","description":"同名公众号 。十年架构、日百亿系统设计经验，希望一起进步","name":"小姐姐味道","isAdvertiser":false,"headline":"同名公众号 小姐姐味道，专注基础架构和管理","gender":1,"url":"\u002Fpeople\u002F76eb1af105b8f0b64d62435d27017435","avatarUrl":"https:\u002F\u002Fpic1.zhimg.com\u002Fv2-443415017d0da11ea385445e3f025c12_l.jpg","isOrg":false,"type":"people"},"followers":847,"type":"column"}}],"isTitleImageFullScreen":false,"upvotedFollowees":[],"commercialInfo":{"isCommercial":false,"plugin":{}},"suggestEdit":{"status":false,"reason":"","tip":"","url":"","title":""},"reason":"","annotationAction":[],"canTip":true,"tipjarorsCount":0,"isLabeled":false,"hasPublishingDraft":false,"isFavorited":false,"isNormal":true,"status":0,"shareText":"SpringBoot如何加载jar包外面的配置文件？ - 来自知乎专栏「基础架构」，作者: 小姐姐味道 https:\u002F\u002Fzhuanlan.zhihu.com\u002Fp\u002F87858227 （想看更多？下载 @知乎 App：http:\u002F\u002Fweibo.com\u002Fp\u002F100404711598 ）","canComment":{"status":true,"reason":""},"mcnFpShow":-1,"isVisible":true,"isLiked":false,"likedCount":0}},"columns":{"c_1093563016150409216":{"description":"知乎，不就是用来吐槽的么？","canManage":false,"intro":"探寻计算机工程学最隐秘的部位","isFollowing":false,"urlToken":"c_1093563016150409216","id":"c_1093563016150409216","articlesCount":72,"acceptSubmission":true,"title":"基础架构","url":"https:\u002F\u002Fzhuanlan.zhihu.com\u002Fc_1093563016150409216","commentPermission":"all","created":1553505740,"updated":1562401831,"imageUrl":"https:\u002F\u002Fpic3.zhimg.com\u002Fv2-717d8857955b8a6d2da7e522c025b43c_b.jpg","author":{"isFollowed":false,"avatarUrlTemplate":"https:\u002F\u002Fpic1.zhimg.com\u002Fv2-443415017d0da11ea385445e3f025c12_{size}.jpg","uid":"627503042858192896","userType":"people","isFollowing":false,"urlToken":"lycying","id":"76eb1af105b8f0b64d62435d27017435","description":"同名公众号 。十年架构、日百亿系统设计经验，希望一起进步","name":"小姐姐味道","isAdvertiser":false,"headline":"同名公众号 小姐姐味道，专注基础架构和管理","gender":1,"url":"\u002Fpeople\u002F76eb1af105b8f0b64d62435d27017435","avatarUrl":"https:\u002F\u002Fpic1.zhimg.com\u002Fv2-443415017d0da11ea385445e3f025c12_l.jpg","isOrg":false,"type":"people"},"followers":847,"type":"column"}},"topics":{},"roundtables":{},"favlists":{},"comments":{},"notifications":{},"ebooks":{},"activities":{},"feeds":{},"pins":{},"promotions":{},"drafts":{},"chats":{},"posts":{},"clubs":{},"clubTags":{}},"currentUser":"","account":{"lockLevel":{},"unlockTicketStatus":false,"unlockTicket":null,"challenge":[],"errorStatus":false,"message":"","isFetching":false,"accountInfo":{},"urlToken":{"loading":false}},"settings":{"socialBind":null,"inboxMsg":null,"notification":{},"email":{},"privacyFlag":null,"blockedUsers":{"isFetching":false,"paging":{"pageNo":1,"pageSize":6},"data":[]},"blockedFollowees":{"isFetching":false,"paging":{"pageNo":1,"pageSize":6},"data":[]},"ignoredTopics":{"isFetching":false,"paging":{"pageNo":1,"pageSize":6},"data":[]},"restrictedTopics":null,"laboratory":{}},"notification":{},"people":{"profileStatus":{},"activitiesByUser":{},"answersByUser":{},"answersSortByVotesByUser":{},"answersIncludedByUser":{},"votedAnswersByUser":{},"thankedAnswersByUser":{},"voteAnswersByUser":{},"thankAnswersByUser":{},"topicAnswersByUser":{},"articlesByUser":{},"articlesSortByVotesByUser":{},"articlesIncludedByUser":{},"pinsByUser":{},"questionsByUser":{},"commercialQuestionsByUser":{},"favlistsByUser":{},"followingByUser":{},"followersByUser":{},"mutualsByUser":{},"followingColumnsByUser":{},"followingQuestionsByUser":{},"followingFavlistsByUser":{},"followingTopicsByUser":{},"publicationsByUser":{},"columnsByUser":{},"allFavlistsByUser":{},"brands":null,"creationsByUser":{},"creationsSortByVotesByUser":{}},"env":{"ab":{"config":{"experiments":[{"expId":"launch-gw_mweb_rec-1","expPrefix":"gw_mweb_rec","isDynamicallyUpdated":true,"isRuntime":false,"includeTriggerInfo":false},{"expId":"launch-qa_hdpimg-2","expPrefix":"qa_hdpimg","isDynamicallyUpdated":true,"isRuntime":false,"includeTriggerInfo":false},{"expId":"launch-us_foltopic_user-10","expPrefix":"us_foltopic_user","isDynamicallyUpdated":true,"isRuntime":false,"includeTriggerInfo":false},{"expId":"vd_bullet_second-7","expPrefix":"vd_bullet_second","isDynamicallyUpdated":true,"isRuntime":false,"includeTriggerInfo":false},{"expId":"se_relationship-4","expPrefix":"se_relationship","isDynamicallyUpdated":true,"isRuntime":false,"includeTriggerInfo":false}],"params":[{"id":"se_featured","type":"String","value":"1","chainId":"_all_"},{"id":"tp_m_intro_re_topic","type":"String","value":"1","chainId":"_all_"},{"id":"li_purchase_test","type":"String","value":"0","chainId":"_all_"},{"id":"se_colorfultab","type":"String","value":"1","chainId":"_all_"},{"id":"se_movietab","type":"String","value":"1","chainId":"_all_"},{"id":"soc_iossort","type":"String","value":"0","chainId":"_all_"},{"id":"ug_follow_answerer","type":"String","value":"0","chainId":"_all_"},{"id":"gue_bullet_second","type":"String","value":"0"},{"id":"tsp_hotlist_ui","type":"String","value":"1","chainId":"_all_"},{"id":"ls_fmp4","type":"String","value":"0","chainId":"_all_"},{"id":"li_se_heat","type":"String","value":"1","chainId":"_all_"},{"id":"tp_club_pic_swiper","type":"String","value":"0","chainId":"_all_"},{"id":"web_collect","type":"String","value":"0"},{"id":"tp_club_pk","type":"String","value":"1","chainId":"_all_"},{"id":"tp_club_qa_pic","type":"String","value":"1","chainId":"_all_"},{"id":"soc_adpinweight","type":"String","value":"0","chainId":"_all_"},{"id":"ug_goodcomment_0","type":"String","value":"1","chainId":"_all_"},{"id":"web_answer_update","type":"String","value":"0"},{"id":"zr_rec_answer_cp","type":"String","value":"close","chainId":"_all_"},{"id":"se_waterfall","type":"String","value":"0","chainId":"_all_"},{"id":"se_hot_timebox","type":"String","value":"0","chainId":"_all_"},{"id":"se_rel_search","type":"String","value":"0","chainId":"_all_"},{"id":"se_cbert_ab","type":"String","value":"1","chainId":"_all_"},{"id":"zr_km_answer","type":"String","value":"open_cvr","chainId":"_all_"},{"id":"zr_km_sku_mix","type":"String","value":"sku_20","chainId":"_all_"},{"id":"tp_topic_style","type":"String","value":"0","chainId":"_all_"},{"id":"soc_authormore2","type":"String","value":"0","chainId":"_all_"},{"id":"li_album_liutongab","type":"String","value":"0","chainId":"_all_"},{"id":"se_search_feed","type":"String","value":"N","chainId":"_all_"},{"id":"tp_club_android_join","type":"String","value":"1","chainId":"_all_"},{"id":"zr_intervene","type":"String","value":"0","chainId":"_all_"},{"id":"se_auto_syn","type":"String","value":"0","chainId":"_all_"},{"id":"tp_score_1","type":"String","value":"a","chainId":"_all_"},{"id":"li_catalog_card","type":"String","value":"0","chainId":"_all_"},{"id":"li_ebook_audio","type":"String","value":"0","chainId":"_all_"},{"id":"se_prf","type":"String","value":"0","chainId":"_all_"},{"id":"li_salt_hot","type":"String","value":"1","chainId":"_all_"},{"id":"zr_slot_cold_start","type":"String","value":"aver","chainId":"_all_"},{"id":"zr_video_rank_nn","type":"String","value":"new_rank","chainId":"_all_"},{"id":"zr_km_style","type":"String","value":"base","chainId":"_all_"},{"id":"se_famous","type":"String","value":"1","chainId":"_all_"},{"id":"se_payconsult","type":"String","value":"0","chainId":"_all_"},{"id":"soc_authormore","type":"String","value":"2","chainId":"_all_"},{"id":"pf_noti_entry_num","type":"String","value":"0","chainId":"_all_"},{"id":"li_qa_new_cover","type":"String","value":"1","chainId":"_all_"},{"id":"li_se_section","type":"String","value":"0","chainId":"_all_"},{"id":"zr_slot_training","type":"String","value":"1","chainId":"_all_"},{"id":"zr_article_new","type":"String","value":"close","chainId":"_all_"},{"id":"se_likebutton","type":"String","value":"0","chainId":"_all_"},{"id":"se_backsearch","type":"String","value":"0","chainId":"_all_"},{"id":"tsp_videobillboard","type":"String","value":"1","chainId":"_all_"},{"id":"pf_newguide_vertical","type":"String","value":"0","chainId":"_all_"},{"id":"ug_follow_answerer_0","type":"String","value":"0","chainId":"_all_"},{"id":"ls_zvideo_license","type":"String","value":"1","chainId":"_all_"},{"id":"li_pay_banner_type","type":"String","value":"6","chainId":"_all_"},{"id":"li_svip_tab_search","type":"String","value":"0","chainId":"_all_"},{"id":"zr_video_recall","type":"String","value":"current_recall","chainId":"_all_"},{"id":"se_wannasearch","type":"String","value":"0","chainId":"_all_"},{"id":"pf_fuceng","type":"String","value":"1","chainId":"_all_"},{"id":"zr_search_sim","type":"String","value":"0","chainId":"_all_"},{"id":"tp_qa_metacard_top","type":"String","value":"top","chainId":"_all_"},{"id":"sem_up_growth","type":"String","value":"in_app","chainId":"_all_"},{"id":"zr_training_first","type":"String","value":"false","chainId":"_all_"},{"id":"zr_test_aa1","type":"String","value":"0","chainId":"_all_"},{"id":"tsp_vote","type":"String","value":"2","chainId":"_all_"},{"id":"li_android_vip","type":"String","value":"0","chainId":"_all_"},{"id":"li_se_media_icon","type":"String","value":"1","chainId":"_all_"},{"id":"se_preset_tech","type":"String","value":"0","chainId":"_all_"},{"id":"web_heifetz_grow_ad","type":"String","value":"1"},{"id":"zr_se_new_xgb","type":"String","value":"1","chainId":"_all_"},{"id":"se_websearch","type":"String","value":"3","chainId":"_all_"},{"id":"soc_zcfw_broadcast","type":"String","value":"0","chainId":"_all_"},{"id":"soc_wonderuser_recom","type":"String","value":"2","chainId":"_all_"},{"id":"ls_zvideo_rec","type":"String","value":"2","chainId":"_all_"},{"id":"li_vip_lr","type":"String","value":"1","chainId":"_all_"},{"id":"li_vip_no_ad_mon","type":"String","value":"0","chainId":"_all_"},{"id":"zw_sameq_sorce","type":"String","value":"999","chainId":"_all_"},{"id":"zr_update_merge_size","type":"String","value":"1","chainId":"_all_"},{"id":"se_suggest_cache","type":"String","value":"0","chainId":"_all_"},{"id":"se_aa_base","type":"String","value":"0","chainId":"_all_"},{"id":"top_v_album","type":"String","value":"1","chainId":"_all_"},{"id":"li_hot_score_ab","type":"String","value":"0","chainId":"_all_"},{"id":"li_answer_card","type":"String","value":"0","chainId":"_all_"},{"id":"li_answers_link","type":"String","value":"0","chainId":"_all_"},{"id":"li_qa_btn_text","type":"String","value":"0","chainId":"_all_"},{"id":"se_expired_ob","type":"String","value":"0","chainId":"_all_"},{"id":"se_whitelist","type":"String","value":"0","chainId":"_all_"},{"id":"web_sem_ab","type":"String","value":"1"},{"id":"zr_km_training_boost","type":"String","value":"false","chainId":"_all_"},{"id":"se_hotsearch_2","type":"String","value":"1","chainId":"_all_"},{"id":"se_lottery","type":"String","value":"0","chainId":"_all_"},{"id":"tp_topic_entry","type":"String","value":"0","chainId":"_all_"},{"id":"gue_video_autoplay","type":"String","value":"0"},{"id":"li_se_across","type":"String","value":"0","chainId":"_all_"},{"id":"li_sku_bottom_bar_re","type":"String","value":"0","chainId":"_all_"},{"id":"web_question_invite","type":"String","value":"B"},{"id":"zr_video_rank","type":"String","value":"new_rank","chainId":"_all_"},{"id":"se_hotmore","type":"String","value":"2","chainId":"_all_"},{"id":"se_billboardsearch","type":"String","value":"0","chainId":"_all_"},{"id":"tp_sft_v2","type":"String","value":"d","chainId":"_all_"},{"id":"zr_expslotpaid","type":"String","value":"1","chainId":"_all_"},{"id":"soc_newfeed","type":"String","value":"2","chainId":"_all_"},{"id":"soc_special","type":"String","value":"0","chainId":"_all_"},{"id":"gue_goods_card","type":"String","value":"0"},{"id":"se_ios_spb309","type":"String","value":"0","chainId":"_all_"},{"id":"se_cardrank_2","type":"String","value":"1","chainId":"_all_"},{"id":"se_college","type":"String","value":"default","chainId":"_all_"},{"id":"se_cardrank_4","type":"String","value":"1","chainId":"_all_"},{"id":"gue_bullet_guide","type":"String","value":"发个弹幕聊聊…"},{"id":"se_webrs","type":"String","value":"1","chainId":"_all_"},{"id":"tp_club_tab","type":"String","value":"0","chainId":"_all_"},{"id":"zr_km_slot_style","type":"String","value":"event_card","chainId":"_all_"},{"id":"se_site_onebox","type":"String","value":"0","chainId":"_all_"},{"id":"web_mweb_rec_length","type":"String","value":"1"},{"id":"se_p_slideshow","type":"String","value":"0","chainId":"_all_"},{"id":"tp_sticky_android","type":"String","value":"2","chainId":"_all_"},{"id":"li_video_section","type":"String","value":"0","chainId":"_all_"},{"id":"zr_art_rec","type":"String","value":"base","chainId":"_all_"},{"id":"se_new_topic","type":"String","value":"0","chainId":"_all_"},{"id":"se_pek_test2","type":"String","value":"1","chainId":"_all_"},{"id":"tp_club_header","type":"String","value":"1","chainId":"_all_"},{"id":"soc_zcfw_badcase","type":"String","value":"0","chainId":"_all_"},{"id":"soc_brdcst3","type":"String","value":"0","chainId":"_all_"},{"id":"li_answer_label","type":"String","value":"0","chainId":"_all_"},{"id":"se_presearch_ab","type":"String","value":"0","chainId":"_all_"},{"id":"tp_topic_head","type":"String","value":"0","chainId":"_all_"},{"id":"soc_iospinweight","type":"String","value":"0","chainId":"_all_"},{"id":"li_yxzl_new_style_a","type":"String","value":"1","chainId":"_all_"},{"id":"tp_sft","type":"String","value":"a","chainId":"_all_"},{"id":"tp_club_join","type":"String","value":"0","chainId":"_all_"},{"id":"soc_zcfw_broadcast2","type":"String","value":"1","chainId":"_all_"},{"id":"se_zu_recommend","type":"String","value":"0","chainId":"_all_"},{"id":"soc_adreadfilter","type":"String","value":"0","chainId":"_all_"},{"id":"soc_adsort","type":"String","value":"0","chainId":"_all_"},{"id":"gue_new_special_page","type":"String","value":"0"},{"id":"web_hdpimg","type":"String","value":"1"},{"id":"ug_zero_follow_0","type":"String","value":"0","chainId":"_all_"},{"id":"web_answer_list_ad","type":"String","value":"1"},{"id":"se_spb309","type":"String","value":"0","chainId":"_all_"},{"id":"tp_qa_metacard","type":"String","value":"1","chainId":"_all_"},{"id":"li_query_match","type":"String","value":"0","chainId":"_all_"},{"id":"ls_recommend_test","type":"String","value":"0","chainId":"_all_"},{"id":"se_relation_1","type":"String","value":"0","chainId":"_all_"},{"id":"se_ltr_dnn_cp","type":"String","value":"0","chainId":"_all_"},{"id":"tp_topic_rec","type":"String","value":"1","chainId":"_all_"},{"id":"soc_zcfw_shipinshiti","type":"String","value":"0","chainId":"_all_"},{"id":"top_hotcommerce","type":"String","value":"1","chainId":"_all_"},{"id":"web_column_auto_invite","type":"String","value":"0"},{"id":"se_webtimebox","type":"String","value":"0","chainId":"_all_"},{"id":"se_new_merger","type":"String","value":"1","chainId":"_all_"},{"id":"ug_follow_topic_1","type":"String","value":"2","chainId":"_all_"},{"id":"ls_videoad","type":"String","value":"2","chainId":"_all_"},{"id":"li_answer_right","type":"String","value":"0","chainId":"_all_"},{"id":"zr_ans_rec","type":"String","value":"gbrank","chainId":"_all_"},{"id":"se_multianswer","type":"String","value":"0","chainId":"_all_"},{"id":"se_use_zitem","type":"String","value":"0","chainId":"_all_"},{"id":"zw_payc_qaedit","type":"String","value":"0","chainId":"_all_"},{"id":"zr_training_queue","type":"String","value":"false","chainId":"_all_"},{"id":"li_paid_answer_exp","type":"String","value":"0","chainId":"_all_"},{"id":"se_subtext","type":"String","value":"0","chainId":"_all_"},{"id":"se_bert_comp","type":"String","value":"0","chainId":"_all_"},{"id":"tp_club_qa","type":"String","value":"1","chainId":"_all_"},{"id":"soc_iosreadfilter","type":"String","value":"0","chainId":"_all_"},{"id":"top_root","type":"String","value":"0","chainId":"_all_"},{"id":"zr_km_sku_thres","type":"String","value":"false","chainId":"_all_"},{"id":"se_topicfeed","type":"String","value":"0","chainId":"_all_"},{"id":"se_cardrank_1","type":"String","value":"0","chainId":"_all_"},{"id":"se_time_threshold","type":"String","value":"0","chainId":"_all_"},{"id":"soc_ri_merge","type":"String","value":"0","chainId":"_all_"},{"id":"li_tjys_ec_ab","type":"String","value":"0","chainId":"_all_"},{"id":"qap_question_author","type":"String","value":"0","chainId":"_all_"},{"id":"se_related_index","type":"String","value":"3","chainId":"_all_"},{"id":"soc_update","type":"String","value":"1","chainId":"_all_"},{"id":"top_test_4_liguangyi","type":"String","value":"1","chainId":"_all_"},{"id":"web_mweb_launch","type":"String","value":"0"},{"id":"web_unfriendly_comm","type":"String","value":"0"},{"id":"se_club_post","type":"String","value":"5","chainId":"_all_"},{"id":"se_ltr_cp_new","type":"String","value":"0","chainId":"_all_"},{"id":"web_mini_review","type":"String","value":"0"},{"id":"gue_thanks","type":"String","value":"0"},{"id":"web_ask","type":"String","value":"0"},{"id":"tp_topic_tab_new","type":"String","value":"0-0-0","chainId":"_all_"},{"id":"soc_stickypush","type":"String","value":"1","chainId":"_all_"},{"id":"ug_fw_answ_aut_1","type":"String","value":"0","chainId":"_all_"},{"id":"web_n_web_msg","type":"String","value":"0"},{"id":"web_answerlist_ad","type":"String","value":"0"},{"id":"zr_answer_rec_cp","type":"String","value":"open","chainId":"_all_"},{"id":"zr_rel_search","type":"String","value":"base","chainId":"_all_"},{"id":"zr_slotpaidexp","type":"String","value":"1","chainId":"_all_"},{"id":"se_hotsearch","type":"String","value":"0","chainId":"_all_"},{"id":"se_zu_onebox","type":"String","value":"0","chainId":"_all_"},{"id":"soc_brdcst4","type":"String","value":"0","chainId":"_all_"},{"id":"qap_article_like","type":"String","value":"0","chainId":"_all_"},{"id":"se_relationship","type":"String","value":"1","chainId":"_all_"},{"id":"soc_feed_intimacy","type":"String","value":"0","chainId":"_all_"},{"id":"top_new_feed","type":"String","value":"5","chainId":"_all_"},{"id":"ug_zero_follow","type":"String","value":"0","chainId":"_all_"},{"id":"web_ad_banner","type":"String","value":"0"},{"id":"li_se_edu","type":"String","value":"0","chainId":"_all_"},{"id":"se_timebox_up","type":"String","value":"0","chainId":"_all_"},{"id":"se_ad_index","type":"String","value":"10","chainId":"_all_"},{"id":"soc_bigone","type":"String","value":"0","chainId":"_all_"},{"id":"soc_leave_recommend","type":"String","value":"2","chainId":"_all_"},{"id":"pf_creator_card","type":"String","value":"1","chainId":"_all_"},{"id":"gue_anonymous","type":"String","value":"show"},{"id":"se_preset_label","type":"String","value":"1","chainId":"_all_"},{"id":"soc_notification","type":"String","value":"0","chainId":"_all_"},{"id":"se_col_boost","type":"String","value":"0","chainId":"_all_"},{"id":"se_agency","type":"String","value":" 0","chainId":"_all_"},{"id":"se_college_cm","type":"String","value":"0","chainId":"_all_"},{"id":"gue_zhuantikapian","type":"String","value":"0"},{"id":"qap_thanks","type":"String","value":"1","chainId":"_all_"},{"id":"se_cate_l3","type":"String","value":"0","chainId":"_all_"},{"id":"soc_iosintimacy","type":"String","value":"0","chainId":"_all_"},{"id":"soc_zuichangfangwen","type":"String","value":"0","chainId":"_all_"},{"id":"top_ydyq","type":"String","value":"X","chainId":"_all_"},{"id":"li_education_box","type":"String","value":"0","chainId":"_all_"},{"id":"li_search_v5","type":"String","value":"0","chainId":"_all_"},{"id":"soc_bignew","type":"String","value":"1","chainId":"_all_"},{"id":"se_ctx_rerank","type":"String","value":"1","chainId":"_all_"},{"id":"se_pek_test","type":"String","value":"1","chainId":"_all_"},{"id":"li_hot_voted","type":"String","value":"0","chainId":"_all_"},{"id":"se_webmajorob","type":"String","value":"0","chainId":"_all_"},{"id":"tp_discover","type":"String","value":"0","chainId":"_all_"},{"id":"tp_qa_toast","type":"String","value":"1","chainId":"_all_"},{"id":"tp_club_feed","type":"String","value":"1","chainId":"_all_"},{"id":"ug_newtag","type":"String","value":"0","chainId":"_all_"},{"id":"zr_km_feed_nlp","type":"String","value":"old","chainId":"_all_"},{"id":"se_pek_test3","type":"String","value":"1","chainId":"_all_"},{"id":"se_sug","type":"String","value":"1","chainId":"_all_"},{"id":"tp_meta_card","type":"String","value":"0","chainId":"_all_"},{"id":"tp_header_style","type":"String","value":"1","chainId":"_all_"},{"id":"web_sec605","type":"String","value":"0"},{"id":"se_entity_model_14","type":"String","value":"0","chainId":"_all_"},{"id":"se_amovietab","type":"String","value":"1","chainId":"_all_"},{"id":"se_adxtest","type":"String","value":"1","chainId":"_all_"},{"id":"top_universalebook","type":"String","value":"1","chainId":"_all_"},{"id":"li_qa_cover","type":"String","value":"old","chainId":"_all_"},{"id":"soc_cardheight","type":"String","value":"2","chainId":"_all_"},{"id":"qap_ques_invite","type":"String","value":"0","chainId":"_all_"},{"id":"se_mobileweb","type":"String","value":"1","chainId":"_all_"},{"id":"gue_zvideo_link","type":"String","value":"0"},{"id":"se_entity_model","type":"String","value":"0","chainId":"_all_"},{"id":"soc_yxzl_zcfw","type":"String","value":"0","chainId":"_all_"},{"id":"pf_foltopic_usernum","type":"String","value":"50","chainId":"_all_"},{"id":"li_ebok_chap","type":"String","value":"0","chainId":"_all_"},{"id":"qap_payc_invite","type":"String","value":"0","chainId":"_all_"},{"id":"tp_club_pic","type":"String","value":"0.6","chainId":"_all_"},{"id":"tp_topic_tab","type":"String","value":"0","chainId":"_all_"},{"id":"top_quality","type":"String","value":"0","chainId":"_all_"},{"id":"qap_question_visitor","type":"String","value":" 0","chainId":"_all_"},{"id":"zr_training_all_item","type":"String","value":"false","chainId":"_all_"},{"id":"se_cbert","type":"String","value":"0","chainId":"_all_"},{"id":"se_sug_entrance","type":"String","value":"1","chainId":"_all_"},{"id":"se_cardrank_3","type":"String","value":"0","chainId":"_all_"},{"id":"gue_card_test","type":"String","value":"1"},{"id":"se_topiclabel","type":"String","value":"1","chainId":"_all_"},{"id":"se_member_rescore","type":"String","value":"0","chainId":"_all_"},{"id":"top_ebook","type":"String","value":"0","chainId":"_all_"}],"chains":[{"chainId":"_all_"}]},"triggers":{}},"userAgent":{"Edge":false,"Wechat":false,"Weibo":false,"QQ":false,"MQQBrowser":false,"Qzone":false,"Mobile":false,"Android":false,"iOS":false,"isAppleDevice":false,"Zhihu":false,"ZhihuHybrid":false,"isBot":false,"Tablet":false,"UC":false,"Sogou":false,"Qihoo":false,"Baidu":false,"BaiduApp":false,"Safari":false,"GoogleBot":false,"AndroidDaily":false,"iOSDaily":false,"isWebView":false,"origin":"Mozilla\u002F5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\u002F537.36 (KHTML, like Gecko) Chrome\u002F68.0.3440.106 Safari\u002F537.36"},"appViewConfig":{},"ctx":{"path":"\u002Fp\u002F87858227","href":"http:\u002F\u002Fzhuanlan.zhihu.com\u002Fp\u002F87858227","host":"zhuanlan.zhihu.com"},"trafficSource":"production","edition":{"baidu":false,"sogou":false,"baiduBeijing":false,"sogouBeijing":false,"sogouInput":false},"theme":"light","enableShortcut":true,"referer":"https:\u002F\u002Fwww.zhihu.com\u002Fcollection\u002F244875219","conf":{},"ipInfo":{"cityName":"","countryName":"中国","regionName":"江苏","countryCode":"CN"},"logged":false},"me":{"columnContributions":[]},"label":{"recognizerLists":{}},"ecommerce":{},"comments":{"pagination":{},"collapsed":{},"reverse":{},"reviewing":{},"conversation":{},"parent":{}},"commentsV2":{"stickers":[],"commentWithPicPermission":{},"notificationsComments":{},"pagination":{},"collapsed":{},"reverse":{},"reviewing":{},"conversation":{},"conversationMore":{},"parent":{}},"pushNotifications":{"default":{"isFetching":false,"isDrained":false,"ids":[]},"follow":{"isFetching":false,"isDrained":false,"ids":[]},"vote_thank":{"isFetching":false,"isDrained":false,"ids":[]},"currentTab":"default","notificationsCount":{"default":0,"follow":0,"vote_thank":0}},"messages":{"data":{},"currentTab":"common","messageCount":0},"register":{"registerValidateSucceeded":null,"registerValidateErrors":{},"registerConfirmError":null,"sendDigitsError":null,"registerConfirmSucceeded":null},"login":{"loginUnregisteredError":false,"loginBindWechatError":false,"loginConfirmError":null,"sendDigitsError":null,"needSMSIdentify":false,"validateDigitsError":false,"loginConfirmSucceeded":null,"qrcodeLoginToken":"","qrcodeLoginScanStatus":0,"qrcodeLoginError":null,"qrcodeLoginReturnNewToken":false},"active":{"sendDigitsError":null,"activeConfirmSucceeded":null,"activeConfirmError":null},"switches":{},"captcha":{"captchaNeeded":false,"captchaValidated":false,"captchaBase64String":null,"captchaValidationMessage":null,"loginCaptchaExpires":false},"sms":{"supportedCountries":[]},"chat":{"chats":{},"inbox":{"recents":{"isFetching":false,"isDrained":false,"isPrevDrained":false,"result":[],"next":null,"key":null},"strangers":{"isFetching":false,"isDrained":false,"isPrevDrained":false,"result":[],"next":null,"key":null},"friends":{"isFetching":false,"isDrained":false,"isPrevDrained":false,"result":[],"next":null,"key":null},"search":{"isFetching":false,"isDrained":false,"isPrevDrained":false,"result":[],"next":null,"key":null},"config":{"newCount":0,"strangerMessageSwitch":false,"strangerMessageUnread":false,"friendCount":0}},"global":{"isChatMqttExisted":false}},"emoticons":{"emoticonGroupList":[],"emoticonGroupDetail":{}},"creator":{"currentCreatorUrlToken":null,"homeData":{"recommendQuestions":[]},"tools":{"question":{"invitationCount":{"questionFolloweeCount":0,"questionTotalCount":0},"goodatTopics":[]},"customPromotion":{"itemLists":{}},"recommend":{"recommendTimes":{}}},"explore":{"academy":{"tabs":[],"article":{}}},"rights":[],"rightsStatus":{},"levelUpperLimit":10,"account":{"growthLevel":{}},"mcn":{},"applyStatus":{}},"recommendation":{"homeRecommendations":[]},"shareTexts":{},"articles":{"voters":{}},"previewPost":{},"favlists":{"relations":{}},"columns":{"voters":{}},"reward":{"answer":{},"article":{},"question":{}},"video":{"data":{},"shareVideoDetail":{},"last":{}},"topstory":{"recommend":{"isFetching":false,"isDrained":false,"afterId":0,"items":[],"next":null},"follow":{"isFetching":false,"isDrained":false,"afterId":0,"items":[],"next":null},"followWonderful":{"isFetching":false,"isDrained":false,"afterId":0,"items":[],"next":null},"sidebar":null,"announcement":{},"hotListCategories":[],"hotList":[],"guestFeeds":{"isFetching":false,"isDrained":false,"afterId":0,"items":[],"next":null},"followExtra":{"isNewUser":null,"isFetched":false,"followCount":0,"followers":[]}},"readStatus":{},"column":{},"requestColumn":{"categories":[],"error":null},"articleContribution":{"contributeRequests":[],"deleteContributeIdList":[],"handledContributeIdList":[],"recommendedColumns":[],"pinnedColumns":[],"sentContributeRequestsIdList":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"c_1093563016150409216"]},"columnContribution":{"contributeRequests":[],"autoInviteEnabled":false,"recommendedContributors":[],"contributionInvitation":null},"draftHistory":{"history":{},"drafts":{}},"upload":{},"articleDraft":{"titleImage":"","titleImageSize":{},"isTitleImageFullScreen":false,"canTitleImageFullScreen":false,"title":"","titleImageUploading":false,"error":"","content":"","draftLoading":false,"updating":false,"globalLoading":false,"pendingVideo":{"resource":null,"error":null},"deleteFail":{"fail":false},"recommendTopics":[],"selectedColumn":0,"articleDisclaimers":[]},"articleDrafts":{"isDrained":false,"isLoading":false,"items":[]},"columnAutocomplete":{"users":[],"friends":[]},"mcn":{"bindInfo":{},"memberCategoryList":[],"producerList":[],"categoryList":[]}},"fetchHost":"www.zhihu.com","subAppName":"column"}</script><script src="./SpringBoot如何加载jar包外面的配置文件？ - 知乎_files/vendor.7e94b6f1bbc8e94cdcd4.js.下载"></script><script src="./SpringBoot如何加载jar包外面的配置文件？ - 知乎_files/column.app.829cb92fe3f7a333aca8.js.下载"></script><script src="./SpringBoot如何加载jar包外面的配置文件？ - 知乎_files/hm.js.下载" async=""></script><script src="./SpringBoot如何加载jar包外面的配置文件？ - 知乎_files/push.js.下载" async=""></script><script src="./SpringBoot如何加载jar包外面的配置文件？ - 知乎_files/zap.js.下载"></script><div><div style="display: none;">想来知乎工作？请发送邮件到 jobs@zhihu.com</div></div><div><div><div class="Editable-languageSuggestions" style="left: -1179px; top: -999px;"><div><div class="Popover"><label class="Editable-languageSuggestionsInput Input-wrapper"><input autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-activedescendant="AutoComplete12-0" id="Popover11-toggle" aria-haspopup="true" aria-owns="Popover11-content" class="Input" placeholder="选择语言" value=""><svg class="Zi Zi--Select" fill="#afbdcf" viewBox="0 0 24 24" width="24" height="24"><path d="M12 16.183l2.716-2.966a.757.757 0 0 1 1.064.001.738.738 0 0 1 0 1.052l-3.247 3.512a.758.758 0 0 1-1.064 0L8.22 14.27a.738.738 0 0 1 0-1.052.758.758 0 0 1 1.063 0L12 16.183zm0-9.365L9.284 9.782a.758.758 0 0 1-1.064 0 .738.738 0 0 1 0-1.052l3.248-3.512a.758.758 0 0 1 1.065 0L15.78 8.73a.738.738 0 0 1 0 1.052.757.757 0 0 1-1.063.001L12 6.818z" fill-rule="evenodd"></path></svg></label></div></div></div></div></div></body></html>

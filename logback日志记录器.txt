@@ -1,0 +1,50 @@
+配置文件：
+logback.xml
+
+<property name="LOG_NAME"  定义日志文件的存储地址
+
+<appender name="Stdout" class="ch.qos.logback.core.ConsoleAppender" 控制台输出
+	<layout 日志输出格式
+
+<appender name="RollingFile" class="ch.qos.logback.rolling.RollingFileAppender" 按照每天生成日志文件
+
+<root level  日志输出级别
+	<append-ref
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

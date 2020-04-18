@@ -1,0 +1,26 @@
+使用actuator检查与监控
+步骤：
+1.在pom文件中添加actuator的坐标 org.springframework.boot/spring-boot-starter-actuator
+2.在全局配置文件中设置关闭安全限制 management.security.enabled=false
+启动springboot
+uri: /health 
+放入浏览器地址访问 localhost:8080/health 返回json
+uri: /env
+uri: /dump 线程相关
+
+springbootadmin项目, 可视化的监控报表
+步骤：
+搭建服务端
+服务端其实也是一个springboot项目
+1.访问springbootadmin github
+2.修改pom文件，加springbootadmin坐标
+3.修改启动类，添加@EnableAdminServer
+搭建客户端
+客户端就是我们需要监控的工程
+1.修改客户端pom文件添加依赖spring-boot-admin-start-client
+2.修改配置文件
+spring.boot.admin.url: http://localhost:8090  指向服务端
+management.security.enabled=false
+最后，先启动服务端再启动客户端
+
+

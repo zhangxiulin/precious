@@ -1,0 +1,35 @@
+@ControllerAdvice+@ExceptionHandler
+
+步骤：
+1. 创建异常处理类
+@ControllerAdvice
+public class MyControllerAdvice{
+	
+	@ResponseBody
+	@ExceptionHandler(value=java.lang.Exception.class)  2.捕获
+	public Map<String,Object> myException(Exception ex){
+		Map<String,Object> map = new HashMap<>();
+		map.put("code",500);
+		map.put("msg","出错了");
+		return map;
+	}
+
+	@ResponseBody
+	@ExceptionHandler(value=java.lang.NullPointerException.class)
+	public Map<String,Object> myException2(Exception ex){
+		Map<String,Object> map = new HashMap<>();
+		map.put("code",-500);
+		map.put("msg","空指针异常");
+		return map;
+	}
+
+	/*自定义异常*/
+	@ResponseBody
+	@ExceptionHandler(value=xxxException.class)
+	public Map<String,Object> myException3(Exception ex){
+		Map<String,Object> map = new HashMap<>();
+		map.put("code",-800);
+		map.put("msg","自定义异常");
+		return map;
+	}
+}

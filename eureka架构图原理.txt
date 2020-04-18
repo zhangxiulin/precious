@@ -1,0 +1,7 @@
+eureka动作：
+Register(服务注册)：把自己的IP和端口注册给Eureka
+Renew（服务续约）：发送心跳包，每30秒发送一次，告诉eureka自己还活着
+Cancel（服务下线）：当provider关闭时会向eureka发送消息，把自己从服务列表中删除。防止consumer调用到不存在的服务
+Get Register（获取服务注册列表）：获取其他服务列表
+Replicate（集群中数据同步）：eureka集群中的数据复制与同步
+Make remote call（远程调用）：完成服务的远程调用

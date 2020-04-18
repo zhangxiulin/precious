@@ -1,0 +1,10 @@
+@SpringBootApplication  ：代表springboot的启动类
+
+@SpringBootConfiguration:通过bean对象来获取配置信息
+@Configuration：通过对bean对象的操作替代spring中的xml文件
+
+@EnableAutoConfiguration:完成一些初始化环境的配置
+
+@ComponentScan: 来完成spring的组件扫描，替代之前我们在xml中配置组件扫描 <context:component-scan package="...">
+
+@RestController: @Controller  @ResponseBody  表示当前这个controller下的所有方法都会以json格式的数据响应。

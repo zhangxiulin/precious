@@ -1,0 +1,39 @@
+public static String profileFile() throws IOException{
+	try(BufferedReader br = new BufferedReader(new FileReader("data.txt"))){
+		return br.readLine();
+	}
+}
+
+使用步骤：
+step1:行为参数化
+需要一种方法把行为传递给processFile，以便它可以利用BufferedReader执行不同的行为。
+String result = processFile((BufferedReader br) -> br.readLine()+br.readLine());
+
+setp2:使用函数式接口来传递行为
+lambda仅可用于上下文是函数式接口的情况。需要创建一个能匹配BufferedReader -> String，还可以抛出IOException异常的接口
+@FunctionalInterface
+public interface BufferedReaderProcessor{
+	String process(BufferedReader b) throws IOException;
+}
+可以把这个接口作为新的processFile方法的参数了：
+public static String processFile(BufferedReaderProcessor p) throws IOException{
+...
+}
+
+step3:执行一个行为
+任何BufferedReader -> String形式的lambda都可以作为参数来传递，以为他们符合BufferedReaderProcessor
+接口中定义的process方法的签名。现在你只需要一种方法在processFile主体内执行的lambda所代表的代码。lambda
+表达式允许你直接内联，为函数式接口的抽象方法提供实现，并且将整个表达式作为函数式接口的一个实例。因此，你
+可以在processFile主体内，对得到的BufferedReaderProcessor对象调用process方法执行处理：
+public static String processFile(BufferedReaderProcessor p) throws IOException{
+	try(BufferedReader br = new BufferedReader(new FileReader("data.txt"))){
+		return p.process(br);
+	}
+}
+a
+step4:传递lambda
+现在你就可以通过传递不同的lambda重用processFile方法，并以不同的方式处理文件了
+处理一行
+String oneLine = processFile((BufferedReader br) -> br.readLine());
+处理两行
+String twoLines = processFile((BufferedReader br) -> br.readLine()+br.readLine());

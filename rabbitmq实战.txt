@@ -1,0 +1,13 @@
+rabbitmq安装
+1.安装erlang
+2.安装rabbitmq server
+3.启动rabbitmq
+配置为守护进程随系统自动启动，root权限下执行：chkconfig rabbitmq-server on
+启动rabbitmq服务 /sbin/service rabbitmq-server start
+4.安装web版的管理界面
+5.设置rabbitmq远程IP登录
+
+为什么要用rabbitmq？
+同步变异步方式：
+1. 线程池，自己实现线程池，并且强耦合
+2. 消息队列mq，解耦，流量销锋

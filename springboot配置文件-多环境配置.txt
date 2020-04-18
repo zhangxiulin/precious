@@ -1,0 +1,12 @@
+思路：
+profile:代表的就是一个环境变量
+语法结构：application-{profile}.properties
+
+需求：
+application-dev.properties
+application-test.properties
+application-prod.properties
+
+步骤：
+1. 项目打包  clean install 
+2. 运行项目  java -jar xxx.jar --spring.profiles.active={profile}
