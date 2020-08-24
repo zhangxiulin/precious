@@ -1,0 +1,55 @@
+我们怎么将关系型数据库转移到kv数据库中，下面是表设计
+
+ 
+关系型数据库的设计
+
+ 
+
+mysql> select * from login; 
++---------+----------------+-------------+---------------------+ 
+| user_id | name           | login_times | last_login_time     | 
++---------+----------------+-------------+---------------------+ 
+|       1 | ken thompson   |           5 | 2011-01-01 00:00:00 | 
+|       2 | dennis ritchie |           1 | 2011-02-01 00:00:00 | 
+|       3 | Joe Armstrong  |           2 | 2011-03-01 00:00:00 | 
++---------+----------------+-------------+---------------------+
+ 
+
+user_id表的主键
+name表示用户名
+login_times表示该用户的登录次数，每次用户登录后，login_times会自增
+last_login_time更新为当前时间。
+ 
+
+　　redis的设计
+
+　　关系型数据转化为KV数据库，我的方法如下：
+
+　　key 表名：主键值：列名
+
+　　value 列值
+
+　　一般使用冒号做分割符，这是不成文的规矩。比如在php-admin for redis系统里，就是默认以冒号分割，于是user:1 user:2等key会分成一组。于是以上的关系数据转化成kv数据后记录如下：
+
+ 
+
+　　Set login:1:login_times 5 
+　　Set login:2:login_times 1 
+　　Set login:3:login_times 2 
+　　Set login:1:last_login_time 2011-1-1 
+　　Set login:2:last_login_time 2011-2-1 
+　　Set login:3:last_login_time 2011-3-1 
+　　set login:1:name ”ken thompson“ 
+　　set login:2:name “dennis ritchie” 
+　　set login:3:name ”Joe Armstrong“
+ 
+
+　　这样在已知主键的情况下，通过get、set就可以获得或者修改用户的登录次数和最后登录时间和姓名。
+
+　　一般用户是无法知道自己的id的，只知道自己的用户名，所以还必须有一个从name到id的映射关系，这里的设计与上面的有所不同。
+
+ 
+
+　　set "login:ken thompson:id" 1 
+　　set "login:dennis ritchie:id" 2 
+　　set "login: Joe Armstrong:id" 3

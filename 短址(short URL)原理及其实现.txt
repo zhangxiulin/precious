@@ -1,0 +1,134 @@
+前言
+最近看了一些关于短址（short URL）方面的一些博客，有些博客说到一些好的东西，但是，也不是很全，所以，这篇博客算是对其它博客的一个总结吧。
+
+介绍
+短址，顾名思义，就是把长的 URL 转成短的 URL, 现在提供这种服务的有很多公司，我们以google家的 URL shortener 服务： http://goo.gl/ 为例。
+
+首先我们到 http://goo.gl/，然后把本文博客的地址http://blog.csdn.net/beiyeqingteng 输入进去，最后它会返回一个更短的URL，http://goo.gl/Jfs6q 。如下图所示：
+
+URL 解析
+当我们在浏览器里输入 http://goo.gl/Jfs6q 时，DNS首先解析获得http://goo.gl/的IP地址。当DNS获得IP地址以后（比如：74.125.225.72），会向这个地址发送HTTP GET请求，查询 Jfs6q， 这个时候，http://goo.gl/服务器会把请求通过HTTP 301转到对应的长URL http://blog.csdn.net/beiyeqingteng 。后面的解析过程就和平常网址解析是一样的了。
+
+短址本质
+短址本质上是实现了一个映射函数 f: X -> Y 。而这个映射函数必须同时具有两个特点：
+
+如果 x1 != x2, 则 f (x1) != f(x2);
+
+对于每一个 y, 能够找到唯一的一个 x 使得 f(x) = y;
+
+对于任何的线性函数，比如 f(x) = 2x，都满足这样的条件。
+
+好了，如果了解了短址的本质，我们再来看它是如何实现的。
+
+注明：在google URL shortener 服务中，它允许一个长 url 对应多个短的url。这可能是出于安全上的考虑。在本文中，我们不考虑这种情况。
+
+实现：
+
+短址的长度一般设为 6 位，而每一位是由 [a - z, A - Z, 0 - 9] 总共 62 个字母组成的，所以6位的话，总共会有 62^6 ~= 568亿种组合，基本上够用了。在google URL shortener 服务中，短址长度为 5，大概有9亿多种组合.
+
+假设我们用数据库来保存长地址和短地址的映射，那么，在表 LongtoShortURL 中，我们会有三列：
+
+1. ID，int,  自动增长；
+
+2. LURL，varchar,  // 长URL；
+
+3. SURL, varchar,  // 短URL。
+
+现在我们考虑通过如何长URL得到唯一的短URL。
+
+在讲具体算法以前，先提一个问题：10进制数和16进制数之间的转换是否满足刚刚提到的映射函数 f: X -> Y中的两个条件？
+
+答案： 是。
+
+本文的思路也是利用进制之间的转换。因为我们总共有 62 个字母，我们可以自创一种进制，叫做 62 进制。其规则如下：
+
+0  → a
+1  → b
+...
+25 → z
+...
+52 → 0
+61 → 9
+所以，对于每一个长地址，我们可以根据它的ID，得到一个6位的 62 进制数，这个6位的 62 进制数就是我们的短址。具体实现如下：
+
+public ArrayList<Integer> base62(int id) {
+    
+    ArrayList<Integer> value = new ArrayList<Integer>();
+    while (id > 0) {
+        int remainder = id % 62;
+        value.add(remainder);
+        id = id / 62;
+    }
+    
+    return value;
+}
+举例
+对于 ID = 138，通过 base62(138), 我们得到 value = [14, 2]。根据上面的对应规则表，我们可以得到其对应的短址为：aaaabn 。(由 value 得到具体的短址，可以通过switch 语句得到，因为代码太长，在此略过。)
+
+当我们想通过短址找到所对应的长地址，方法也很简单，就是把62进制数转成10进制数即可，这样我们就可以得到长地址的ID了。代码如下：
+
+public static int base10(ArrayList<Integer> base62) {
+    //make sure the size of base62 is 6
+    for (int i = 1; i <= 6 - base62.size(); i++) {
+        base62.add(0, 0);
+    }
+    
+    int id = 0;
+    int size = base62.size();
+    for (int i = 0; i < size; i++) {
+        int value = base62.get(i);
+        id += (int) (value * Math.pow(62, size - i - 1));
+    }
+    
+    return id;
+}
+比如，对于短址aaae9a，其62进制为[0, 0, 0, 4,61,0] ，则其长地址的ID 为[0, 0, 0, 4,61,0] = 0×62^5+ 0×62^4 + 0×62^3 + 4×62^2 + 61×62^1 + 0×62^0 = 1915810。有了ID，我们自然就可以得到长地址了。
+
+--------------------------------------------------------------------------------------------------------------
+https://stackoverflow.com/questions/742013/how-do-i-create-a-url-shortener
+
+Theoretical background
+You need a Bijective Function f. This is necessary so that you can find a inverse function g('abc') = 123 for your f(123) = 'abc' function. This means:
+
+There must be no x1, x2 (with x1 ≠ x2) that will make f(x1) = f(x2),
+and for every y you must be able to find an x so that f(x) = y.
+How to convert the ID to a shortened URL
+Think of an alphabet we want to use. In your case, that's [a-zA-Z0-9]. It contains 62 letters.
+Take an auto-generated, unique numerical key (the auto-incremented id of a MySQL table for example).
+
+For this example, I will use 12510 (125 with a base of 10).
+
+Now you have to convert 12510 to X62 (base 62).
+
+12510 = 2×621 + 1×620 = [2,1]
+
+This requires the use of integer division and modulo. A pseudo-code example:
+
+digits = []
+
+while num > 0
+  remainder = modulo(num, 62)
+  digits.push(remainder)
+  num = divide(num, 62)
+
+digits = digits.reverse
+Now map the indices 2 and 1 to your alphabet. This is how your mapping (with an array for example) could look like:
+
+0  → a
+1  → b
+...
+25 → z
+...
+52 → 0
+61 → 9
+With 2 → c and 1 → b, you will receive cb62 as the shortened URL.
+
+http://shor.ty/cb
+How to resolve a shortened URL to the initial ID
+The reverse is even easier. You just do a reverse lookup in your alphabet.
+
+e9a62 will be resolved to "4th, 61st, and 0th letter in the alphabet".
+
+e9a62 = [4,61,0] = 4×622 + 61×621 + 0×620 = 1915810
+
+Now find your database-record with WHERE id = 19158 and do the redirect.
